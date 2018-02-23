@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="Hbox" alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+        <HBox alignment="CENTER_LEFT" minWidth="70.0" prefHeight="79.0" prefWidth="70.0">
+            <ImageView fx:id="img" fitHeight="61.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+        </HBox>
+        <VBox minWidth="86" prefWidth="155" styleClass="Description">
+
+            <HBox>
+                <HBox prefHeight="16" prefWidth="20" styleClass="surveyDesIcon" />
+                <Label fx:id="nom" text="nom" />
+            </HBox>
+            <HBox>
+                <HBox prefHeight="16" prefWidth="20" styleClass="DateIcon" />
+                <Label fx:id="prix" text="prix" />
+            </HBox>
+            <HBox>
+                <HBox prefHeight="16" prefWidth="20" styleClass="DateIcon" />
+                <Label fx:id="type" text="Type" />
+            </HBox>
+        </VBox>
+        <HBox minWidth="80" prefHeight="79.0" prefWidth="372.0">
+            <Label fx:id="desc" text="Description" />
+        </HBox>
+    </HBox>
