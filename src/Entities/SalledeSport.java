@@ -15,7 +15,6 @@ public class SalledeSport extends Etablissement {
     private int nb_entraineur;
 
     public SalledeSport() {
-        super();
     }
 
     public SalledeSport(int id_etab, int nb_entraineur, String nom, String adresse, String date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture, String image, int idUser) {
