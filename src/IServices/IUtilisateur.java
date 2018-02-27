@@ -15,14 +15,14 @@ import java.util.List;
 public interface IUtilisateur {
    public void ajouterUtilisateur (Utilisateur u);
    public void supprimerUtilisateur (Utilisateur u);
-public void modifierMotDePasse(String password, int id);   
-public void modifierUtilisateur (Utilisateur u);
+   public void modifierMotDePasse (String password, String username);
+   public void modifierUtilisateur (Utilisateur u);
    public List <Utilisateur> afficherUtilisateurs();
    public List<Utilisateur> rechercherUtilisateur(String username);
    //public Utilisateur afficherUtilisateur();
    public Utilisateur Authentifier (String login,String password);
    public boolean Authentification (String login,String password);
-   public void validerCompte(String code, Utilisateur u);
+   
    //public Utilisateur rehercherUtilisateur (String username);
    //public void validerCompte(String code, FosUser u);
    //public void activerCompte (int id);

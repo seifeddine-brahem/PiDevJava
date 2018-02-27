@@ -1,0 +1,283 @@
+/*
+ * Empty Stylesheet file.
+ */
+AnchorPane 
+{
+    -fx-font-family: "iransans";
+    -fx-font-size: 14px;
+    -fx-font-weight: 200;
+    -fx-font-style: normal;
+}
+
+AnchorPane#anchorpane_border
+{
+    -fx-border-color:#999999;
+}
+
+#listU
+{
+        -fx-background-image :  url("../images/listeUtilisateurs.png");
+
+}
+Button {    
+    -fx-text-fill: #ffffff;
+    -fx-cursor: default;
+    -fx-background-color: #1abc9c;
+    -fx-effect: innershadow( one-pass-box , #149075 , 0, 0, 0 , -3);
+}
+
+Button:hover {
+    -fx-background-color: #33D6B6;
+}
+Button:focused { 
+    -fx-background-color: #33D6B6;
+}
+
+Button:pressed {
+    -fx-background-color: #17a689;
+    -fx-effect: innershadow( one-pass-box , #149075 , 0, 0, 1 , 2);
+}
+
+Button#btn_profiles_list {
+    -fx-text-fill: #1abc9c;
+    -fx-background-color: transparent;
+    -fx-background-image: url(../images/profiles_list.png);
+    -fx-background-size: 70;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top;
+    -fx-effect: no-effect;
+}
+
+Button#btn_profiles_list:hover {
+    -fx-text-fill: #33D6B6;
+    -fx-background-image: url(../images/profiles_list_hover.png);
+}
+
+Button#btn_profiles_list:pressed {
+    -fx-text-fill: #17a689;
+}
+
+Button#btn_add_profile {
+    -fx-text-fill: #1abc9c;
+    -fx-background-color: transparent;
+    -fx-background-image: url(../images/add_profile.png);
+    -fx-background-size: 35;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top;
+    -fx-effect: no-effect;
+}
+
+Button#btn_add_profile:hover {
+    -fx-text-fill: #33D6B6;
+    -fx-background-image: url(../images/add_profile_hover.png);
+}
+
+Button#btn_add_profile:pressed {
+    -fx-text-fill: #17a689;
+    -fx-background-image: url(../images/add_profile_pressed.png);
+}
+
+Button#btn_edit_profile {
+    -fx-text-fill: #1abc9c;
+    -fx-background-color: transparent;
+    -fx-background-image: url(../images/delete_profile.png);
+    -fx-background-size: 50;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top;
+    -fx-effect: no-effect;
+}
+
+Button#btn_edit_profile:hover {
+    -fx-text-fill: #33D6B6;
+    -fx-background-image: url(../images/edit_profile_hover.png);
+}
+
+Button#btn_edit_profile:pressed {
+    -fx-text-fill: #17a689;
+    -fx-background-image: url(../images/edit_profile_pressed.png);
+}
+
+Button#stat {
+    -fx-text-fill: #17a689;
+    -fx-background-image: url(../images/stat.png);
+}
+
+Button#btn_delete_profile {
+    -fx-text-fill: #1abc9c;
+    -fx-background-color: transparent;
+    -fx-background-image: url(../images/delete_profile.png);
+    -fx-background-size: 50;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top;
+    -fx-effect: no-effect;
+}
+
+Button#btn_delete_profile:hover {
+    -fx-text-fill: #33D6B6;
+    -fx-background-image: url(../images/delete_profile_hover.png);
+}
+
+Button#btn_delete_profile:pressed {
+    -fx-text-fill: #17a689;
+    -fx-background-image: url(../images/delete_profile_pressed.png);
+}
+
+Button#btn_advance_search {
+    -fx-text-fill: #1abc9c;
+    -fx-background-color: transparent;
+    -fx-background-image: url(../images/advance_search.png);
+    -fx-background-size: 50;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top;
+    -fx-effect: no-effect;
+}
+
+Button#btn_advance_search:hover {
+    -fx-text-fill: #33D6B6;
+    -fx-background-image: url(../images/advance_search_hover.png);
+}
+
+Button#btn_advance_search:pressed {
+    -fx-text-fill: #17a689;
+    -fx-background-image: url(../images/advance_search_pressed.png);
+}
+
+Button#btn_save_profile {
+    -fx-text-fill: #1abc9c;
+    -fx-background-color: transparent;
+    -fx-background-image: url(../images/save_profile.png);
+    -fx-background-size: 50;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top;
+    -fx-effect: no-effect;
+}
+
+Button#btn_save_profile:hover {
+    -fx-text-fill: #33D6B6;
+    -fx-background-image: url(../images/save_profile_hover.png);
+}
+
+Button#btn_save_profile:pressed {
+    -fx-text-fill: #17a689;
+    -fx-background-image: url(../images/save_profile_pressed.png);
+}
+
+Button#btn_settings {
+    -fx-background-color: #555555;
+    -fx-effect: innershadow( one-pass-box , #414141 , 0, 0, 0 , -1);
+}
+
+Button#btn_settings:hover {
+    -fx-background-color: #626262;
+}
+
+Button#btn_settings:pressed {
+    -fx-background-color: #484848;
+}
+
+Button#btn_blue {
+    -fx-background-color: #3ab1e4;
+    -fx-effect: innershadow( one-pass-box , #414141 , 0, 0, 0 , -1);
+}
+
+Button#btn_blue:hover {
+    -fx-background-color: #50bae7;
+    -fx-effect: innershadow( one-pass-box , #414141 , 0, 0, 0 , -1);
+}
+
+Button#btn_blue:pressed {
+    -fx-background-color: #1c93c6;
+    -fx-effect: innershadow( one-pass-box , #414141 , 0, 0, 0 , -1);
+}
+
+Label
+{
+    -fx-text-fill: #555555;
+}
+
+Label:lb_window_title 
+{
+    -fx-font-size: 10px;
+}
+Label#lb_close {
+    -fx-font-family: "Calibri";
+    -fx-font-style: bold;
+    -fx-font-size: 25px;
+}
+Label#lb_close:hover {
+    -fx-background-color:#ff6666;
+    -fx-text-fill: #ffffff;
+}
+
+Label#lb_close:pressed {
+    -fx-opacity: 0.6;
+}
+
+Label#lb_maximize {
+    -fx-font-family: "Calibri";
+    -fx-font-style: bold;
+    -fx-font-size: 23px;
+}
+
+Label#lb_maximize:hover {
+    -fx-background-color:#e5e5e5;
+}
+
+Label#lb_maximize:pressed {
+    -fx-background-color:#cccccc;
+}
+
+Label#lb_minimize {
+    -fx-font-family: "Calibri";
+    -fx-font-style: bold;
+    -fx-font-size: 23px;
+}
+
+Label#lb_minimize:hover {
+    -fx-background-color:#e5e5e5;
+}
+
+Label#lb_minimize:pressed {
+    -fx-background-color:#cccccc;
+}
+
+HBox#layout_menu_hbox {
+    -fx-background-color:#444444;
+}
+FlowPane#flowpane_avatar:hover {
+    -fx-background-color: #1abc9c;
+}
+
+ImageView#imgview_avatar{
+    -fx-image: url(../images/avatar-hover.png);
+}
+
+HBox#hbox_search_box {
+    -fx-background-color: #323232;
+}
+
+TextField#txf_search_box {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+}
+
+TextField:focused,PasswordField:focused {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}
+
+ImageView#imgview_search {
+    -fx-image: url(../images/search.png);
+}
+
+ImageView#imgview_search:hover {
+    -fx-image: url(../images/search-hover.png);
+}
+
+ImageView#imgview_search:pressed {
+    -fx-image: url(../images/search-pressed.png);
+}
+
+VBox#vbox_right_menu {
+    -fx-background-color: #DCDCDC;
+    -fx-effect: dropshadow( one-pass-box , #BBBBBB   ,4, 0, -2 , 0);
+}

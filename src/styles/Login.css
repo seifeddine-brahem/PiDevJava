@@ -1,0 +1,96 @@
+AnchorPane {
+    -fx-border-color:#999999;
+}
+
+Button {
+    -fx-text-fill: #ffffff;
+    -fx-cursor: default;
+    -fx-display: block;
+    -fx-direction: rtl;
+    -fx-height: 48.8px;
+    -fx-alignment: CENTER;
+    -fx-white-space: nowrap;
+    -fx-width: 388.4px;
+    -fx-background-color: #1abc9c;
+    -fx-font-family: "iransans";
+    -fx-font-size: 14px;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-padding: 18px;
+    -fx-effect: innershadow( one-pass-box , #149075 , 0, 0, 0 , -5);
+}
+
+Button:hover {
+    -fx-background-color: #33D6B6;
+}
+Button:focused {
+    -fx-background-color: #33D6B6;
+}
+
+Button:pressed {
+    -fx-background-color: #17a689;
+    -fx-effect: innershadow( one-pass-box , #149075 , 0, 0, 1 , 5);
+}
+
+Label {
+    -fx-text-fill: #555555;
+    -fx-direction: rtl;
+    -fx-font-family: "iransans";
+    -fx-font-size: 14px;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+}
+
+Label#lb_login_title {
+    -fx-text-fill: #000000;
+    -fx-font-size: 20px;
+    -fx-font-style: bold;
+}
+
+Label#lb_close {
+    -fx-font-family: "Calibri";
+    -fx-font-style: bold;
+    -fx-font-size: 25px;
+    -fx-alignment: CENTER;
+}
+Label#lb_close:hover {
+    -fx-background-color:#ff6666;
+    -fx-text-fill: #ffffff;
+}
+
+Label#lb_close:pressed {
+    -fx-opacity: 0.6;
+}
+
+Label#lb_warning {
+    -fx-background-color:#fcebef;
+    -fx-text-fill: #ce1a46;
+    -fx-border-color:#758196;
+    -fx-border-style: dashed;
+    -fx-opacity: 0.7;
+}
+
+Label#lb_hide_warn {
+    -fx-font-family: "Calibri";
+    -fx-font-style: bold;
+    -fx-font-size: 25px;
+    -fx-alignment: CENTER;
+    -fx-opacity: 0.8;
+}
+
+Label#lb_hide_warn:hover {
+    -fx-cursor: hand;
+}
+
+TextField,PasswordField {
+    -fx-alignment: center-right;
+    -fx-direction: rtl;
+    -fx-font-family: "iransans";
+    -fx-font-size: 14px;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+}
+
+TextField:focused,PasswordField:focused {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}

@@ -1,0 +1,186 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+AnchorPane {
+    -fx-background-color: #fff;
+    -fx-font-family: "iransans";
+    -fx-font-size: 14px;
+    -fx-font-weight: 200;
+    -fx-font-style: normal;
+    
+}
+
+AnchorPane#anchor_transparent {
+    -fx-background-color: transparent;
+}
+Label#lb_title {
+    -fx-font-size: 18px;
+    -fx-text-fill: #626262;
+}
+
+Separator {
+    -fx-border-color: #0073B7;
+    -fx-border-style: solid;
+    -fx-border-width: 5 0 0 0 ;
+}
+TextField,PasswordField {
+    -fx-alignment: center-right;
+    -fx-direction: rtl;
+}
+
+Button {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-cursor: default;
+    -fx-display: block;
+    -fx-direction: rtl;
+    -fx-height: 40px;
+    -fx-alignment: CENTER;
+    -fx-white-space: nowrap;
+    -fx-background-color: #3ab1e4;
+    -fx-padding: 10px;
+    -fx-effect: innershadow( one-pass-box , #1b92c5 , 0, 0, 0 , -5);
+}
+
+Button:hover {
+    -fx-background-color: #50bae7;
+}
+Button:focused {
+    -fx-background-color: #50bae7;
+}
+
+Button:pressed {
+    -fx-background-color: #23a8e1;
+    -fx-effect: innershadow( one-pass-box , #1b92c5 , 0, 0, 1 , 5);
+}
+
+Button#btn_thin {
+    -fx-padding: 0px;
+}
+
+
+.not_validate_label {
+    -fx-text-fill: #ff6666;
+}
+
+.tab-pane *.tab-header-background{
+  -fx-background-color: transparent;
+}
+
+.tab-pane *.tab-label {
+    -fx-pref-width:140; 
+    -fx-text-fill: #323232;
+}
+.tab-pane *.tab {
+    -fx-background-color: #e5e5e5;
+    -fx-border-color: transparent;
+    -fx-border-style: none;
+}
+
+.tab-pane *.tab:hover {
+    -fx-background-color: #f5f5f5;
+}
+
+.tab-pane *.tab:selected {
+    -fx-background-color: #DDDDDD;
+    -fx-border-color: transparent;
+}
+
+AnchorPane#content-area {
+    -fx-background-color: #DDDDDD;
+    -fx-effect: dropshadow( one-pass-box , #DDDDDD , 0, 0, 5 , 5);
+}
+
+/********************/
+/****** Table *******/
+/********************/
+
+.table-cell {     
+    -fx-padding: 0.5em 0.5em 0.1em 0.3em;
+    -fx-border-color: -fx-box-border -fx-box-border transparent transparent;
+    -fx-text-fill: #212121;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-insets: 0;
+}
+.table-view {
+    -fx-table-header-border-color: #959595;
+    -fx-table-cell-border-color: -fx-box-border;
+    -fx-control-inner-background: white;
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+.table-view:focused {
+    -fx-background-color: -fx-box-border,-fx-box-border, white;
+}
+.table-row-cell 
+{    
+    -fx-background-color: white;
+}
+.table-row-cell:odd {
+    -fx-background-color: white;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+.table-view:focused .table-row-cell:focused,.table-view:focused .table-row-cell:focused:odd {
+    -fx-background-color: -fx-box-border, white;
+    -fx-background-insets: 0, 1, 2;
+}
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-box-border, rgb(150,150,150);
+}
+.table-view:focused .table-row-cell:filled:selected, .table-view:row-selection .table-row-cell:filled:hover:selected {    
+    -fx-background-color: #1b92c5;
+}
+
+.table-row-cell:filled:selected:focused, .table-row-cell:filled:selected {
+    -fx-background-color: #3ab1e4;
+}
+.table-view:row-selection .table-row-cell:filled:hover { 
+    -fx-background-color: #50bae7;
+}
+.table-view:row-selection .table-row-cell:filled:focused:hover { 
+    -fx-background-color: #23a8e1;
+}
+.table-view:focused .table-row-cell:filled:focused:hover {
+    -fx-background-color: -fx-box-border,rgb(231,231,231);
+}
+.table-view .column-header-background {
+    -fx-background-color: white;
+}
+ 
+.table-view .column-header .label{
+    -fx-text-fill:  #0073B7;
+    -fx-alignment: CENTER;
+}
+
+ 
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: white;    
+    -fx-size: 35;
+    -fx-border-color: -fx-box-border;
+    -fx-border-insets: -1 0 0 -1;
+    -fx-padding: 0 5 0 0;
+}
+.table-view .show-hide-columns-button {
+    -fx-background-color: white;
+    -fx-border-color: -fx-box-border;
+    -fx-border-insets: -1 -1 0 0;
+}
+.table-view .column-drag-header {    
+    -fx-background-color: rgb(45,137,239);
+    -fx-opacity: 0.6;
+}
+.table-view .column-resize-line {  
+    -fx-background-color: rgb(45,137,239);
+}
+.table-view .column-overlay {
+    -fx-background-color: darkgray;
+    -fx-opacity: 0.2;
+}
+.table-view .arrow {
+    -fx-padding: 0.2em;
+    -fx-shape: "M4,17v-2.889l4.124-3.86l4.125,3.86V17l-4.125-3.375L4,17z";
+}

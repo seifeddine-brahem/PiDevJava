@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 23, 2016, 1:25:14 PM
+    Author     : Emad
+*/
+
+Label {
+    -fx-text-fill: #626262;
+    -fx-font-family: "iransans";
+    -fx-font-size: 24px;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+}
+
+Label#lb_detailed {
+    -fx-font-size: 14px;
+}
