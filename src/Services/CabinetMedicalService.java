@@ -8,13 +8,14 @@ package Services;
 import DataStorage.MyDB;
 import Entities.CabinetMedical;
 import Entities.Etablissement;
+import Entities.Utilisateur;
 import IServices.ICabinetMedical;
+import Utils.GetConnectedUser;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,19 +25,23 @@ import java.util.logging.Logger;
  */
 public class CabinetMedicalService implements ICabinetMedical {
 
+    Utilisateur u = GetConnectedUser.GetConnectedUser();
      Connection connexion;
    
     public CabinetMedicalService() {
         connexion = MyDB.getinstance().getConnexion();
     }
+   
     
     
     @Override
-    public void ajouterCabinet(CabinetMedical c) {
+    public void ajouterCabinet(CabinetMedical c)
+    {
+        
     try {
         
               String query1 = "INSERT INTO Etablissements (nom, adresse, date_ouverture, date_fermeture, email, numero,fax,page_facebook,site_web,heure_ouverture,heure_fermeture,image,id_user) "
-                    + "values ( '"+c.getNom()+"','"+c.getAdresse()+"','"+c.getDate_ouverture()+"','"+c.getDate_fermeture()+"','"+c.getEmail()+"',"+c.getNum()+","+c.getFax()+",'"+c.getPage_fb()+"','"+c.getSite_web()+"','"+c.getHeure_ouverture()+"','"+c.getHeure_fermeture()+"','"+c.getImage()+"',1 );";
+                    + "values ( '"+c.getNom()+"','"+c.getAdresse()+"','"+c.getDate_ouverture()+"','"+c.getDate_fermeture()+"','"+c.getEmail()+"',"+c.getNum()+","+c.getFax()+",'"+c.getPage_fb()+"','"+c.getSite_web()+"','"+c.getHeure_ouverture()+"','"+c.getHeure_fermeture()+"','"+c.getImage()+"',"+c.getUser().getId()+" );";
               PreparedStatement stl= connexion.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
             stl.executeUpdate();
               ResultSet  generatedKeys = stl.getGeneratedKeys();
@@ -77,10 +82,10 @@ public class CabinetMedicalService implements ICabinetMedical {
     }
 
     @Override
-    public void modifierCabinet(CabinetMedical c) {
+    public void modifierCabinet(Etablissement e,CabinetMedical c) {
         
         String sql ="UPDATE cabinet_medical SET cnam ="+c.getCnam()+" WHERE id ='"+ c.getId()+"';";
-        String sql2="UPDATE etablissements SET nom='"+c.getNom()+"',adresse='"+c.getAdresse()+"',date_ouverture='"+c.getDate_ouverture()+"',date_fermeture='"+c.getDate_fermeture()+"',email='"+c.getEmail()+"',numero="+c.getNum()+",fax="+c.getFax()+",page_facebook='"+c.getPage_fb()+"',site_web='"+c.getPage_fb()+"',heure_ouverture="+c.getHeure_ouverture()+",heure_fermeture="+c.getHeure_fermeture()+",image='"+c.getImage()+"' where id='"+ c.getId_etab()+"';";
+        String sql2="UPDATE etablissements SET nom='"+e.getNom()+"',adresse='"+e.getAdresse()+"',date_ouverture='"+e.getDate_ouverture()+"',date_fermeture='"+e.getDate_fermeture()+"',email='"+e.getEmail()+"',numero="+e.getNum()+",fax="+e.getFax()+",page_facebook='"+e.getPage_fb()+"',site_web='"+e.getPage_fb()+"',heure_ouverture="+e.getHeure_ouverture()+",heure_fermeture="+e.getHeure_fermeture()+",image='"+e.getImage()+"' where id='"+ e.getId()+"';";
         try {
             Statement st2=connexion.createStatement();
             Statement stl = connexion.createStatement(); 

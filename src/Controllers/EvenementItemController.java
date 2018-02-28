@@ -21,13 +21,13 @@ import javafx.scene.layout.HBox;
  */
 public class EvenementItemController 
 {
-        @FXML
+    @FXML
     private HBox Hbox;
     @FXML
     private ImageView img;
     @FXML
     private Label desc;
-        @FXML
+    @FXML
     private JFXButton btn;
     
       public EvenementItemController() 

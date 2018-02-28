@@ -14,66 +14,102 @@ public class Conseil
 
     private int id_conseil;
     private String description;
-    private int id_categorie;
-    private int id_user;
-
+    private String image;
+    private String nom_categorie;
+    private String nom_user ;
+    private Utilisateur user;
+    private Categorie categorie;
+ 
     public Conseil()
     {
+        user= new Utilisateur();
+        categorie = new Categorie();
     }
 
-    public Conseil(String description, int id_categorie, int id_user)
+    public Conseil(String description, String image, Utilisateur user, Categorie categorie)
     {
-        //this.id_conseil = id_conseil;
         this.description = description;
-        this.id_categorie = id_categorie;
-        this.id_user = id_user;
+        this.image = image;
+        this.user = user;
+        this.categorie = categorie;
     }
 
-    public int getId_conseil()
-    {
+    public int getId_conseil() {
         return id_conseil;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public int getId_categorie()
-    {
-        return id_categorie;
+    public String getImage() {
+        return image;
     }
 
-    public int getId_user()
-    {
-        return id_user;
+    public Utilisateur getUser() {
+        return user;
     }
 
-    public void setId_conseil(int id_conseil)
-    {
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setId_conseil(int id_conseil) {
         this.id_conseil = id_conseil;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setId_categorie(int id_categorie)
-    {
-        this.id_categorie = id_categorie;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setId_user(int id_user)
-    {
-        this.id_user = id_user;
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+
+    public String getNom_categorie() {
+        return nom_categorie;
+    }
+
+    public String getNom_user() {
+        return nom_user;
+    }
+
+
+
+    public void setNom_categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
+    }
+
+    public void setNom_user(String nom_user) {
+        this.nom_user = nom_user;
     }
 
     @Override
-    public String toString()
-    {
-        return "Conseil{" + "id_conseil=" + id_conseil + ", description=" + description + ", id_categorie=" + id_categorie + ", id_user=" + id_user + '}';
+    public String toString() {
+        return "Conseil{" + "id_conseil=" + id_conseil + ", description=" + description + ", image=" + image + '}';
     }
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+ 
+ 
     
     
     

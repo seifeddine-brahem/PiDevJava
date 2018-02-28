@@ -4,10 +4,70 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Feb 19, 2018, 8:10:52 PM
-    Author     : elbrh
+    Created on : 9 févr. 2018, 00:46:03
+    Author     : user
 */
 
-#add{
-    -fx-background-image : url("/Presentation/Images/31794.png");
+id_anchor{
+    -fx-background-color: skyblue;
+    -fx-background-raduis: 4.0;
+    -fx-effect: dropshadow (gaussian, rgb(0.0,0.0,0.0,0.15),6.0,0.7,0.0,1.5);
+    -fx-padding: 16 16 16 16;
+}
+
+
+#fond{
+    -fx-background-image: url("Presentation/Images/okok.png");
+}
+
+#log{
+    -fx-background-image: url("/Presentation/Images/log.png"); 
+}
+
+#mdp{
+    -fx-background-image: url("/Presentation/Images/pass.png"); 
+}
+
+#chat{
+    -fx-background-image: url("/Presentation/Images/chat.png"); 
+}
+
+#notification{
+    -fx-background-image: url("/Presentation/Images/notification.png"); 
+}
+
+#calendrier{
+    -fx-background-image: url("/Presentation/Images/calendrier.png"); 
+}
+
+#evenement{
+    -fx-background-image: url("/Presentation/Images/evenement.png"); 
+}
+
+#conseil{
+    -fx-background-image: url("/Presentation/Images/conseil.png"); 
+}
+
+#rendezvous{
+    -fx-background-image: url("/Presentation/Images/rendezvous.png"); 
+}
+
+#offre{
+    -fx-background-image: url("/Presentation/Images/offre.png"); 
+}
+
+#editer{
+    -fx-background-image: url("/Presentation/Images/edit.png"); 
+}
+
+#key{
+    -fx-background-image: url("/Presentation/Images/key.png"); 
+}
+
+#doc{
+    -fx-background-image: url("/Presentation/Images/doctor.png"); 
+}
+
+#rech{
+    -fx-background-image: url("/Presentation/Images/search.png"); 
 }

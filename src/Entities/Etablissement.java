@@ -27,13 +27,14 @@ public class Etablissement {
     private String site_web;
     private int heure_ouverture;
     private int heure_fermeture;
-    private int idUser;
+    private Utilisateur user;
+    
     
     public Etablissement() 
     {
     }
 
-    public Etablissement(String nom, String adresse, String  date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture,String image,int idUser) 
+    public Etablissement(String nom, String adresse, String  date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture,String image,Utilisateur user) 
     {
 
         this.nom = nom;
@@ -48,7 +49,7 @@ public class Etablissement {
         this.heure_ouverture = heure_ouverture;
         this.heure_fermeture = heure_fermeture;
         this.image=image;
-        this.idUser=idUser;
+        this.user=user;
     }
 
     public String getImage() {
@@ -202,15 +203,17 @@ public class Etablissement {
         
         return resultat;
     }
+
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
     
 
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+  
     
     
     

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="1100.0" stylesheets="@custom.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfileController">
+   <children>
+      <StackPane prefHeight="680.0" prefWidth="1100.0">
+         <children>
+            <AnchorPane fx:id="holderAnchor" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane layoutX="751.0" layoutY="49.0" prefHeight="611.0" prefWidth="320.0" styleClass="card-white">
+                     <children>
+                        <StackPane layoutX="47.0" layoutY="39.0" prefHeight="611.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="611.0" prefWidth="320.0" styleClass="card-white">
+                                 <children>
+                                    <StackPane layoutX="47.0" layoutY="39.0" prefHeight="611.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <Pane prefHeight="180.0" prefWidth="320.0">
+                                                   <children>
+                                                      <ImageView fitHeight="180.0" fitWidth="320.0" pickOnBounds="true">
+                                                         <image>
+                                                            <Image url="@../icons/background.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label fx:id="lblName" alignment="CENTER" layoutX="59.0" layoutY="109.0" prefHeight="30.0" prefWidth="200.0" text="Ettaher Maha" textFill="#eeecec">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </Pane>
+                                                <AnchorPane prefHeight="432.0" prefWidth="320.0">
+                                                   <children>
+                                                      <VBox layoutX="50.0" layoutY="37.0" prefHeight="85.0" prefWidth="221.0">
+                                                         <children>
+                                                            <Label fx:id="lblEmail" prefHeight="30.0" prefWidth="221.0" text="maha.ettaher@esprit.tn" textFill="#797878">
+                                                               <font>
+                                                                  <Font name="Roboto Regular" size="14.0" />
+                                                               </font>
+                                                               <graphic>
+                                                                  <FontAwesomeIconView fill="#404bb6" glyphName="ENVELOPE" size="16.0" wrappingWidth="28.0" />
+                                                               </graphic>
+                                                            </Label>
+                                                            <Label fx:id="lblPhone" prefHeight="30.0" prefWidth="221.0" text="+216 25 145 247" textFill="#797878">
+                                                               <font>
+                                                                  <Font name="Roboto Regular" size="14.0" />
+                                                               </font>
+                                                               <graphic>
+                                                                  <FontAwesomeIconView fill="#404bb6" glyphName="PHONE" size="16.0" wrappingWidth="28.0" />
+                                                               </graphic>
+                                                            </Label>
+                                                            <Label fx:id="lblLocation" prefHeight="30.0" prefWidth="221.0" text="Tunis" textFill="#797878">
+                                                               <font>
+                                                                  <Font name="Roboto Regular" size="14.0" />
+                                                               </font>
+                                                               <graphic>
+                                                                  <FontAwesomeIconView fill="#404bb6" glyphName="MAP_MARKER" size="16.0" wrappingWidth="28.0" />
+                                                               </graphic>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox layoutX="50.0" layoutY="138.0" prefHeight="90.0" prefWidth="221.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="fabEdit" layoutX="262.0" layoutY="122.0" styleClass="fab">
+                                                   <padding>
+                                                      <Insets right="5.0" top="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <AnchorPane fx:id="fabPane" layoutX="267.0" layoutY="128.0" prefHeight="53.0" prefWidth="51.0" />
+                                                <MaterialDesignIconView fill="WHITE" glyphName="BORDER_COLOR" layoutX="274.0" layoutY="160.0" size="26" wrappingWidth="22.666656494140625" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="26.0" layoutY="47.0" prefHeight="106.0" prefWidth="706.0" style="-fx-background-color: rgb(0, 115, 183,0.6); -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 5;">
+                     <children>
+                        <Pane layoutX="22.0" layoutY="-36.0" prefHeight="106.0" prefWidth="115.0" style="-fx-background-color: #0073B7; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4;">
+                           <children>
+                              <ImageView fitHeight="85.0" fitWidth="92.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/search.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <JFXTextField focusColor="#fcfcfc" labelFloat="true" layoutX="233.0" layoutY="42.0" maxWidth="214.0" minWidth="214.0" prefHeight="31.0" prefWidth="214.0" promptText="Rechercher" unFocusColor="WHITE">
+                           <font>
+                              <Font name="Roboto Black" size="13.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton buttonType="RAISED" layoutX="476.0" layoutY="47.0" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #0073B7;" text="Rechercher" textFill="#fffefe">
+                           <font>
+                              <Font name="Roboto Black" size="13.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14.0" wrappingWidth="19.0" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="main" layoutX="27.0" layoutY="218.0" prefHeight="450.0" prefWidth="700.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+      <ButtonBar layoutX="36.0" layoutY="177.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="706.0">
+         <buttons>
+            <JFXButton onAction="#demande" prefHeight="25.0" text="Demande" />
+            <JFXButton text="Annonces" />
+            <JFXButton onAction="#conseil" text="Conseils" />
+            <JFXButton onAction="#event" text="Événements" />
+            <JFXButton text="Commandes" />
+            <JFXButton text="Rendez-vous" />
+            <JFXButton text="Candidatures" />
+         </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

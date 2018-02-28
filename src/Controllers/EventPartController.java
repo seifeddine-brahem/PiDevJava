@@ -55,31 +55,11 @@ import javafx.stage.Stage;
 public class EventPartController extends Application implements Initializable {
 
     @FXML
-    private Color x2;
-    @FXML
-    private Font x1;
-    @FXML
-    private Color x21;
-    @FXML
-    private Font x11;
-    @FXML
     private AnchorPane aujourdhui;
-    @FXML
-    private Color x4;
-    @FXML
-    private Font x3;
     @FXML
     private AnchorPane demain;
     @FXML
     private AnchorPane semaine;
-    @FXML
-    private AnchorPane event;
-    @FXML
-    private AnchorPane ajout;
-    @FXML
-    private AnchorPane modif;
-    @FXML
-    private AnchorPane supprimer;
     
     EvenementService es= new EvenementService();
     private ObservableList<Evenement> data;
@@ -104,16 +84,13 @@ public class EventPartController extends Application implements Initializable {
     private TableColumn<Evenement, String> description;
     @FXML
     private TableColumn<Evenement, String> image;
-    @FXML
-    private TableColumn<Evenement, String> categorie;
+    //private TableColumn<Evenement, String> categorie;
     @FXML
     private JFXButton buttonAjout;
     @FXML
     private JFXButton todayButton;
     @FXML
     private DatePicker date;
-    @FXML
-    private Button raffraichir;
 
     @FXML
     private DatePicker date_ouverture1;
@@ -123,18 +100,16 @@ public class EventPartController extends Application implements Initializable {
     private JFXTextField description1;
     @FXML
     private JFXTextField horaire_ferm;
-    @FXML
-    private JFXTextField image2;
-    @FXML
-    private JFXComboBox<String> categorie1;
+
+    
     @FXML
     private DatePicker date_fin1;
     
         Evenement evenement = new Evenement();
     @FXML
-    private AnchorPane hedha;
-    @FXML
     private Button modifier;
+    @FXML
+    private JFXButton btnSupprimer;
 
     
     public EventPartController()
@@ -156,7 +131,7 @@ public class EventPartController extends Application implements Initializable {
         data = FXCollections.observableArrayList();
         Evenement event;
         
-        
+        archiver();
         
 
         LE.stream().forEach((j) -> {
@@ -170,7 +145,7 @@ public class EventPartController extends Application implements Initializable {
         horaire2.setCellValueFactory(new PropertyValueFactory<>("horaire_fin"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
+        //categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
   
         
         List<String> listCategorie= new ArrayList<>();
@@ -182,19 +157,21 @@ public class EventPartController extends Application implements Initializable {
         horaire_ouv.setVisible(false);
         horaire_ferm.setVisible(false);
         description1.setVisible(false);
-        image2.setVisible(false);
-        categorie1.setVisible(false);
+
         modifier.setVisible(false);
  
         setCellValueFromTableToText();
+        
+        btnSupprimer.setVisible(false);
+        
+        
     } 
  
     
     
-    private void setCellValueFromTableToText() {
+    public void setCellValueFromTableToText() {
         List<String> listCategorie = new ArrayList<>();
                 listCategorie = es.listerNomsCategorie();
-                categorie1.getItems().addAll(listCategorie);
         tableEvent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) 
@@ -206,19 +183,17 @@ public class EventPartController extends Application implements Initializable {
                 horaire_ouv.setVisible(true);
                 horaire_ferm.setVisible(true);
                 description1.setVisible(true);
-                image2.setVisible(true);
-                categorie1.setVisible(true);
+
                 modifier.setVisible(true);
+                btnSupprimer.setVisible(true);
+
                 
                 evenement = tableEvent.getItems().get(tableEvent.getSelectionModel().getSelectedIndex());
-                categorie1.setValue(evenement.getNom_categorie());
                 date_ouverture1.setValue(evenement.getDate_debut());
                 date_fin1.setValue(evenement.getDate_fin());
                 horaire_ouv.setText(evenement.getHoraire_com());
                 horaire_ferm.setText(evenement.getHoraire_fin());
                 description1.setText(evenement.getDescription());
-                image2.setText(evenement.getImage());
-                categorie1.setValue(evenement.getNom_categorie());    
                 
             }
         });
@@ -227,7 +202,7 @@ public class EventPartController extends Application implements Initializable {
     
     
     @FXML
-    void modifierEvent(ActionEvent event) 
+    public void modifierEvent(ActionEvent event) 
     {
                
         evenement.setDate_debut(date_ouverture1.getValue());
@@ -235,8 +210,7 @@ public class EventPartController extends Application implements Initializable {
         evenement.setHoraire_com(horaire_ouv.getText());
         evenement.setHoraire_fin(horaire_ferm.getText());
         evenement.setDescription(description1.getText());
-        evenement.setImage(image2.getText());
-        evenement.getCategorie().setId_categorie((es.getCategorie(categorie1.getSelectionModel().getSelectedItem())).getId_categorie());
+        //evenement.getCategorie().setId_categorie((es.getCategorie(categorie1.getSelectionModel().getSelectedItem())).getId_categorie());
 
         
         es.modifierEvenement(evenement);
@@ -246,8 +220,7 @@ public class EventPartController extends Application implements Initializable {
         horaire_ouv.setVisible(false);
         horaire_ferm.setVisible(false);
         description1.setVisible(false);
-        image2.setVisible(false);
-        categorie1.setVisible(false);
+
         modifier.setVisible(false);
  
         tableEvent.setItems(data);
@@ -259,9 +232,7 @@ public class EventPartController extends Application implements Initializable {
     public void afficher()
     {
 
-        
-        Utilisateur u = GetConnectedUser.GetConnectedUser();
-        List<Evenement> LE = es.afficherEvenementsPartenaire(u.getId());
+        List<Evenement> LE = es.afficherEvenements();
         data = FXCollections.observableArrayList();
         Evenement event;
         
@@ -279,12 +250,12 @@ public class EventPartController extends Application implements Initializable {
         horaire2.setCellValueFactory(new PropertyValueFactory<>("horaire_fin"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
+        //categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
   
     }
     
         @FXML
-    void Ajout(ActionEvent event) throws IOException
+   public  void Ajout(ActionEvent event) throws IOException
     {
         Stage Stage = new Stage();
         Parent root =FXMLLoader.load(getClass().getResource("/Presentation/ajouterEvenement.fxml"));     
@@ -304,18 +275,17 @@ public class EventPartController extends Application implements Initializable {
     }
 
         @FXML
-    void supprimerEvenement(ActionEvent event)
+    public void supprimerEvenement(ActionEvent event)
     {
         Evenement e1 = tableEvent.getSelectionModel().getSelectedItem();
         EvenementService es = new EvenementService();
-        es.supprimmerEvenement(e1.getDate_debut());
+        es.supprimerEvenement(e1);
         afficher();
         
         
     }
     
-    @FXML
-    void modif() throws IOException
+    public void modif() throws IOException
     {
        
         Evenement e= tableEvent.getSelectionModel().getSelectedItem();
@@ -353,7 +323,7 @@ public class EventPartController extends Application implements Initializable {
         horaire2.setCellValueFactory(new PropertyValueFactory<>("horaire_fin"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
+        //categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
        
     }
     
@@ -376,7 +346,7 @@ public class EventPartController extends Application implements Initializable {
 //    }
 //    
         @FXML
-    void chercherEvenementDemain(ActionEvent event)
+    public void chercherEvenementDemain(ActionEvent event)
     {
         
         List<Evenement> LE = es.chercherEvenementDemain();
@@ -397,7 +367,7 @@ public class EventPartController extends Application implements Initializable {
         horaire2.setCellValueFactory(new PropertyValueFactory<>("horaire_fin"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
+//        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
   
                    
  
@@ -405,7 +375,7 @@ public class EventPartController extends Application implements Initializable {
     }
     
         @FXML
-    void chercherSemaine(ActionEvent event)
+   public void chercherSemaine(ActionEvent event)
     {
        
         List<Evenement> LE = es.chercherEvenementSemaine();
@@ -426,7 +396,7 @@ public class EventPartController extends Application implements Initializable {
         horaire2.setCellValueFactory(new PropertyValueFactory<>("horaire_fin"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
+//        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
   
                    
         
@@ -434,7 +404,7 @@ public class EventPartController extends Application implements Initializable {
     }
     
     @FXML
-    void chercherDateJour() 
+   public void chercherDateJour() 
     {
        List<Evenement> LE = es.chercherEvenementAujourdhui();
         data = FXCollections.observableArrayList();
@@ -451,24 +421,14 @@ public class EventPartController extends Application implements Initializable {
         horaire2.setCellValueFactory(new PropertyValueFactory<>("horaire_fin"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
+//        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
                    
     }
-
-  
-
-//    @FXML
-//    private void affichagerCat(ActionEvent event) {
-//   
-//    }
-
-//    @FXML
-//    private void chercheMAha(ContextMenuEvent event) {
-//    }
-//    
+ 
 
     @FXML
-    private void affichagerCat(MouseEvent event) {
+    public void affichagerCat(MouseEvent event) 
+    {
             String  cat= listCat.getSelectionModel().getSelectedItem();
         List<Evenement> LE = es.chercherEvenementParCategorie(cat);
         data = FXCollections.observableArrayList();
@@ -485,10 +445,14 @@ public class EventPartController extends Application implements Initializable {
         horaire2.setCellValueFactory(new PropertyValueFactory<>("horaire_fin"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
+//        categorie.setCellValueFactory(new PropertyValueFactory<>("nom_categorie"));
     }
     
     
+    public void archiver()
+    {
+        es.modifierEvenementArchive();
+    }
     
     
     

@@ -6,10 +6,14 @@
 package Services;
 
 import DataStorage.MyDB;
+import Entities.CabinetMedical;
 import Entities.Demande;
+import Entities.Etablissement;
 import Entities.Utilisateur;
 import IServices.IDemande;
+import Utils.GetConnectedUser;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -40,24 +44,57 @@ public class DemandeService implements IDemande
     @Override
     public void ajouterDemande(Demande d)
     {
-        if (CheckDemande(d.getUser().getId()))
-        {
-            modifierDemande(d);
-            System.out.println("yeaaah");
-        }
-        else {
-        String sql ="Insert into demande(nom,prenom,CIN,date_naissance,CIN_image_recto,CIN_image_verso,diplome,photo_etab,num_identifiant,patente,id_user,etat) values ('"+d.getNom()+"','"+d.getPrenom()+"',"
-                    +d.getCIN()+",'"+d.getDate_naissance()+"','"+d.getCIN_image_recto()+"','"+d.getCIN_image_verso()+"','"+d.getDiplome()+"','"+d.getPhoto_etab()+"',"+d.getNum_identifiant()+",'"+d.getPatente()+"',"+d.getUser().getId()+",'en attente');";
+        Utilisateur u = GetConnectedUser.GetConnectedUser();
+        Etablissement e = new Etablissement();
+        
+        
+        String sqll="select * from etablissements where id_user="+u.getId()+";";
+        
         try 
         {
             Statement stl = conn.createStatement();
+
+            ResultSet  rs2=stl.executeQuery(sqll);       
+            System.out.println("Affichage Done");
+            while(rs2.next())
+            {
+               
+                e.setId(rs2.getInt("id"));
+                e.setNom(rs2.getString("nom"));
+                e.setAdresse(rs2.getString("adresse"));
+                e.setDate_ouverture(rs2.getString("date_ouverture"));
+                e.setDate_fermeture(rs2.getString("date_fermeture"));
+                e.setEmail(rs2.getString("email"));
+                e.setNum(rs2.getInt("numero"));
+                e.setFax(rs2.getInt("fax"));
+                e.setPage_fb(rs2.getString("page_facebook"));
+                e.setSite_web(rs2.getString("site_web"));
+                e.setHeure_ouverture(rs2.getInt("heure_ouverture"));
+                e.setHeure_fermeture(rs2.getInt("heure_fermeture"));
+                e.setImage(rs2.getString("image"));
+//                e.getUser().setId(rs2.getInt("id_user"));
+
+              
+                System.out.println(e);               
+            }
+     }  catch (SQLException ex) {
+            Logger.getLogger(EtablissementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        String sql ="Insert into demande(nom,prenom,CIN,date_naissance,CIN_image_recto,CIN_image_verso,diplome,photo_etab,num_identifiant,patente,id_user,etat,id_etab) values ('"+d.getNom()+"','"+d.getPrenom()+"',"
+                    +d.getCIN()+",'"+d.getDate_naissance()+"','"+d.getCIN_image_recto()+"','"+d.getCIN_image_verso()+"','"+d.getDiplome()+"','"+d.getPhoto_etab()+"',"+d.getNum_identifiant()+",'"+d.getPatente()+"',"+d.getUser().getId()+",'en attente',"+e.getId()+");";
+        try 
+        {
+            System.out.println(sql);
+            Statement stl = conn.createStatement();
             stl.executeUpdate(sql);
             System.out.println("Add Done");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Ajout Demande confirmation");
-            alert.setHeaderText(null);
-            alert.setContentText("demande ajoutée!");
-            alert.showAndWait();
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Ajout Demande confirmation");
+//            alert.setHeaderText(null);
+//            alert.setContentText("demande ajoutée!");
+//            alert.showAndWait();
         }
         catch (SQLException ex)
         {
@@ -65,8 +102,7 @@ public class DemandeService implements IDemande
             System.err.println("SQLState: " + ex.getSQLState());
             System.err.println("VendorError: " + ex.getErrorCode());
         }
-        }
-        
+  
     }
 
     @Override
@@ -117,7 +153,7 @@ public class DemandeService implements IDemande
         
         ResultSet rs;
         
-        String sql ="select * from demande";
+        String sql ="select * from demande where etat='en attente'";
         try 
         {
             Statement stl = conn.createStatement();
@@ -141,7 +177,8 @@ public class DemandeService implements IDemande
                 demande.setPhoto_etab(rs.getString("photo_etab"));
                 demande.setNum_identifiant(rs.getInt("num_identifiant"));
                 demande.setPatente(rs.getString("patente"));
-                //demande.setId_user(rs.getInt("id_user"));
+                demande.getUser().setId(rs.getInt("id_user"));
+
                 ListDemande.add(demande);
                 System.out.println(demande.toString());                
             }
@@ -230,18 +267,21 @@ public class DemandeService implements IDemande
         
     }
     
-    
-    
-    
+
     @Override
     public void decliner(Demande d) 
     {
-        String sql ="UPDATE demande SET etat = 'Refusée' WHERE id_user ="+ d.getId_demande()+";";
+        EtablissementService es = new EtablissementService();
+        String sql ="UPDATE demande SET etat = 'Refusée' WHERE id_demande ="+ d.getId_demande()+";";
+        System.out.println(d.getUser().getId());
+        String sql1 = "DELETE FROM etablissements where id_user= "+d.getUser().getId()+";";   
         try 
         {
+            System.out.println(sql1);
             Statement st2 = conn.createStatement();
             Statement stl = conn.createStatement();
-            stl.executeUpdate(sql);
+//            st2.executeUpdate(sql1);
+//            stl.executeUpdate(sql);
             System.out.println("Demande Refusée");
         } 
         catch (SQLException ex) 
@@ -273,5 +313,10 @@ public class DemandeService implements IDemande
             System.err.println("VendorError: " + ex.getErrorCode());
         }  
     }
+    
+ 
+    
+    
+    
 }
 

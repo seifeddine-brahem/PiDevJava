@@ -55,8 +55,8 @@ public class EvenementService implements IEvenement
     public void ajouterEvenement(Evenement e)           
     {         
        
-        String sql ="Insert into evenements (date_debut,date_fin,horaire_com,horaire_fin,description,image,id_categorie,id_user) values ('"+e.getDate_debut()+"','"+e.getDate_fin()+"','"
-                    +e.getHoraire_com()+"','"+e.getHoraire_fin()+"','"+e.getDescription()+"','"+e.getImage()+"',"+e.getCategorie().getId_categorie()+","+e.getUser().getId()+");";
+        String sql ="Insert into evenements (date_debut,date_fin,horaire_com,horaire_fin,description,image,id_categorie,id_user,archive) values ('"+e.getDate_debut()+"','"+e.getDate_fin()+"','"
+                    +e.getHoraire_com()+"','"+e.getHoraire_fin()+"','"+e.getDescription()+"','"+e.getImage()+"',"+e.getCategorie().getId_categorie()+","+e.getUser().getId()+",0);";
         try 
         {
             System.out.println(sql);
@@ -94,9 +94,37 @@ public class EvenementService implements IEvenement
         {
         try
         {
-            String sql ="DELETE FROM evenements WHERE id_event= "+e.getId_event()+";";
+            String sql5="select COUNT(id_event) AS cmp from action where id_event="+e.getId_event()+" ;";
+            String sql ="DELETE FROM evenements  WHERE id_event="+e.getId_event()+";";
             Statement stl = conn.createStatement();
+            Statement st2 = conn.createStatement();
+            
+             ResultSet rs2=st2.executeQuery(sql5);
+             while (rs2.next())
+             {
+            System.out.println(sql);
+            int i=rs2.getInt("cmp");
+            if(i<1)
+                 {
             stl.executeUpdate(sql);
+            rs2.close();
+            Alert alert7 = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Evenement supprimé!");
+            alert.showAndWait();
+                     
+                 }
+                 else
+                 {
+            Alert alert5 = new Alert(AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Il existe au moins un participant dans cet évenement!");
+            alert.setContentText("Vous ne pouvez pas supprimer cet événement");
+
+            alert.showAndWait();
+                 }
+             }
             System.out.println("Delete EvenementDone");
         } 
         catch (SQLException ex) 
@@ -128,6 +156,55 @@ public class EvenementService implements IEvenement
 
     @Override
     public List<Evenement> afficherEvenements()
+    {
+        List<Evenement> ListEvent=new ArrayList <Evenement>();              
+        ResultSet rs;
+        try 
+        {
+            String sql2="SELECT c.*,ca.nom FROM evenements c, categorie ca WHERE (c.id_categorie = ca.id_categorie) and (c.archive=0)";
+            Statement st2 = conn.createStatement();
+            ResultSet  rs2=st2.executeQuery(sql2);       
+            System.out.println("Affichage Done");
+            
+            while(rs2.next())
+            {                
+                Evenement event = new Evenement();
+                Timestamp input = rs2.getTimestamp("date_debut");              
+                Timestamp input2 = rs2.getTimestamp("date_fin");
+                LocalDate date = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                LocalDate date2 = input2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                LocalDateTime newD = rs2.getTimestamp("date_debut").toLocalDateTime();
+                LocalDateTime newG = rs2.getTimestamp("date_fin").toLocalDateTime();
+                java.util.Date ddd = new java.util.Date();
+                java.sql.Date ddd2= new java.sql.Date(input.getTime());
+                event.setId_event(rs2.getInt("id_event"));
+                event.setDate_debut(date);
+                event.setDate_fin(date2);
+                event.setHoraire_com(rs2.getString("horaire_com"));
+                event.setHoraire_fin(rs2.getString("horaire_fin"));
+                event.setDescription(rs2.getString("description"));
+                event.setImage(rs2.getString("image"));             
+                event.setNom_categorie(rs2.getString("nom"));
+                
+                ListEvent.add(event);
+                System.out.println(event.toString());                             
+            }
+        } 
+        
+        catch (SQLException ex) 
+            
+        {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        
+        return ListEvent;
+        
+    }
+    
+     @Override
+    public List<Evenement> afficherToutEvenements()
     {
         List<Evenement> ListEvent=new ArrayList <Evenement>();              
         ResultSet rs;
@@ -174,7 +251,11 @@ public class EvenementService implements IEvenement
         return ListEvent;
         
     }
-    public Categorie getCategorieID (int idCategorie){
+    
+    
+    
+    public Categorie getCategorieID (int idCategorie)
+    {
     Categorie categorie = new Categorie();
    CategorieService categorieService = new CategorieService();
     
@@ -209,7 +290,7 @@ public class EvenementService implements IEvenement
         ResultSet rs;
         try 
         {
-            String sql2="SELECT * FROM evenements  WHERE id_user='"+idPartenaire+"'";
+            String sql2="SELECT * FROM evenements  WHERE id_user='"+idPartenaire+"' and archive=0";
             Statement st2 = conn.createStatement();
             ResultSet  rs2=st2.executeQuery(sql2);       
             System.out.println("Affichage Done");
@@ -391,6 +472,7 @@ public class EvenementService implements IEvenement
                 event.setImage(rs2.getString("image"));
 //                event.setId_categorie(rs2.getInt("id_categorie"));
 //                event.setId_user(rs2.getInt("id_user"));
+
 
                 ListEvent.add(event);
                 System.out.println(event.toString());                             
@@ -619,9 +701,7 @@ public class EvenementService implements IEvenement
                 event.setHoraire_fin(rs2.getString("horaire_fin"));
                 event.setDescription(rs2.getString("description"));
                 event.setImage(rs2.getString("image"));
-//                event.setId_categorie(rs2.getInt("id_categorie"));
-//                event.setId_user(rs2.getInt("id_user"));
-                 
+        
                  ListEvent.add(event);
                  System.out.println(event.toString());
              }
@@ -760,7 +840,7 @@ public class EvenementService implements IEvenement
         System.out.println(nextWeek);
         LocalDate today = LocalDate.now();
         System.out.println(today);
-        String sql ="select * from evenements where (date_debut<'"+nextWeek+"') AND (date_debut>'"+today+"');";
+        String sql ="select * from evenements where (date_debut<'"+nextWeek+"') AND (date_debut='"+today+"');";
         Statement st2 = conn.createStatement();
              ResultSet  rs2=st2.executeQuery(sql);
              System.out.println("Affichage Done");
@@ -805,8 +885,10 @@ public class EvenementService implements IEvenement
            return ListEvent;
     }  
 
-    public boolean checkisPartcipant(Utilisateur u, Evenement e) {
-         //String sql = "Select * from action WHERE id_user= "+u.getId()+"and id_event ="+e.getId_event()+";";
+    public boolean checkisPartcipant(Utilisateur u, Evenement e)
+    {
+        
+        // String sql = "Select * from action WHERE id_user= "+u.getId()+" and id_event ="+e.getId_event()+";";
          String sql = "Select * from action WHERE id_user= 1 and id_event ="+e.getId_event()+";";
          try{
              Statement stm = conn.createStatement();
@@ -823,8 +905,8 @@ public class EvenementService implements IEvenement
     }
     
         public boolean checkisInteresse(Utilisateur u, Evenement e) {
-        // String sql = "Select * from action WHERE id_user= "+u.getId()+"and id_event ="+e.getId_event()+";";
-          String sql = "Select * from action WHERE id_user= 1 and id_event ="+e.getId_event()+";";
+//        String sql = "Select * from action WHERE id_user= "+u.getId()+"and id_event ="+e.getId_event()+";";
+         String sql = "Select * from action WHERE id_user= 1 and id_event ="+e.getId_event()+";";
          try{
              Statement stm = conn.createStatement();
              ResultSet res = stm.executeQuery(sql);
@@ -841,8 +923,8 @@ public class EvenementService implements IEvenement
         
         
         public void setParticipe(Utilisateur u, Evenement e){
-            // String sql = "INSERT INTO action  Values("+u.getId()+","+e.getId_event()+",'Participe');";
-             String sql = "INSERT INTO action  Values(1,"+e.getId_event()+",'Participe');";
+           String sql = "INSERT INTO action  Values("+u.getId()+","+e.getId_event()+",'Participe');";
+             //String sql = "INSERT INTO action  Values(1,"+e.getId_event()+",'Participe');";
          try{
              Statement stm = conn.createStatement();
              stm.executeUpdate(sql);             
@@ -854,8 +936,8 @@ public class EvenementService implements IEvenement
         }
         
         public void setInteresse(Utilisateur u, Evenement e){
-            // String sql = "INSERT INTO action  Values("+u.getId()+","+e.getId_event()+",'Interesse');";
-             String sql = "INSERT INTO action  Values(1,"+e.getId_event()+",'Interesse');";
+             String sql = "INSERT INTO action  Values("+u.getId()+","+e.getId_event()+",'Interesse');";
+             //String sql = "INSERT INTO action  Values(1,"+e.getId_event()+",'Interesse');";
          try{
              Statement stm = conn.createStatement();
              stm.executeUpdate(sql);             
@@ -867,8 +949,8 @@ public class EvenementService implements IEvenement
         }
         
         public void updateParticipe(Utilisateur u, Evenement e){
-             //String sql = "UPDATE  action  SET type= Participe   WHERE id_user="+u.getId()+"and id_event"+e.getId_event()+";";
-             String sql = "UPDATE  action  SET type= 'Participe'   WHERE id_user= 1 and id_event = "+e.getId_event()+";";
+             String sql = "UPDATE  action  SET type= Participe   WHERE id_user="+u.getId()+"and id_event"+e.getId_event()+";";
+             //String sql = "UPDATE  action  SET type= 'Participe'   WHERE id_user= 1 and id_event = "+e.getId_event()+";";
          try{
              Statement stm = conn.createStatement();
              stm.executeUpdate(sql);             
@@ -880,8 +962,8 @@ public class EvenementService implements IEvenement
         }
         
         public void updateInteresse(Utilisateur u, Evenement e){
-            // String sql = "UPDATE  action  SET type= Interesse   WHERE id_user="+u.getId()+"and id_event"+e.getId_event()+";";
-             String sql = "UPDATE  action  SET type= 'Interesse'   WHERE id_user=1 and id_event = "+e.getId_event()+";";
+             String sql = "UPDATE  action  SET type= Interesse   WHERE id_user="+u.getId()+"and id_event"+e.getId_event()+";";
+            //String sql = "UPDATE  action  SET type= 'Interesse'   WHERE id_user=1 and id_event = "+e.getId_event()+";";
          try{
              Statement stm = conn.createStatement();
              stm.executeUpdate(sql);             
@@ -893,8 +975,8 @@ public class EvenementService implements IEvenement
         }
         
                public void AnnulerInteresse(Utilisateur u, Evenement e){
-            // String sql = "Delete * from   action  WHERE id_user="+u.getId()+"and id_event = "+e.getId_event()+";";
-             String sql = "Delete * from   action  WHERE id_user= 1 and id_event = "+e.getId_event()+";";
+            String sql = "Delete * from   action  WHERE id_user="+u.getId()+"and id_event = "+e.getId_event()+";";
+             //String sql = "Delete * from   action  WHERE id_user= 1 and id_event = "+e.getId_event()+";";
          try{
              Statement stm = conn.createStatement();
              stm.executeUpdate(sql);             
@@ -905,8 +987,8 @@ public class EvenementService implements IEvenement
          }  
         }
                       public void AnnulerParticipant(Utilisateur u, Evenement e){
-             String sql = "Delete *  action   WHERE id_user=1 and id_event= "+e.getId_event()+";";
-            // String sql = "Delete *  action   WHERE id_user="+u.getId()+"and id_event = "+e.getId_event()+";";
+            // String sql = "Delete *  action   WHERE id_user=1 and id_event= "+e.getId_event()+";";
+            String sql = "Delete *  action   WHERE id_user="+u.getId()+"and id_event = "+e.getId_event()+";";
          try{
              Statement stm = conn.createStatement();
              stm.executeUpdate(sql);             
@@ -920,12 +1002,35 @@ public class EvenementService implements IEvenement
 
     
     
-    
-    
-    
-    
-    
-    
+    public void modifierEvenementArchive()
+    {
+        String sql5="select * from evenements where date_fin<now();";
+        
+        try 
+        {
+            Statement st2 = conn.createStatement();
+            Statement stl = conn.createStatement();
+            
+           
+            ResultSet rs=stl.executeQuery(sql5); 
+            while(rs.next())
+            {
+                int i=rs.getInt("id_event");
+                
+                String sql ="UPDATE evenements SET archive = 1 WHERE id_event ="+ i+";";
+                st2.executeUpdate(sql);
+            }
+            
+            
+            System.out.println("Update Evenement done");
+        } 
+        catch (SQLException ex) 
+        {
+            System.err.println("SQLException: " + ex.getMessage());
+            System.err.println("SQLState: " + ex.getSQLState());
+            System.err.println("VendorError: " + ex.getErrorCode());
+        }   
+    }  
 }
 
 

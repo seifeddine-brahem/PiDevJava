@@ -11,22 +11,20 @@ package Entities;
  */
 public class Herboriseterie extends Etablissement {
     private int id;
-    private int id_etab;
+    private Etablissement etab;
     private int livraison;
 
     public Herboriseterie() {
 
     }
 
-    public Herboriseterie(int id_etab, int livraison, String nom, String adresse, String date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture, String image, int idUser) {
-        super(nom, adresse, date_ouverture, date_fermeture, email, num, fax, page_fb, site_web, heure_ouverture, heure_fermeture, image, idUser);
-        this.id_etab = id_etab;
+    public Herboriseterie(Etablissement etab, int livraison, String nom, String adresse, String date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture, String image, Utilisateur user) {
+        super(nom, adresse, date_ouverture, date_fermeture, email, num, fax, page_fb, site_web, heure_ouverture, heure_fermeture, image, user);
+        this.etab = etab;
         this.livraison = livraison;
     }
 
-    public int getId_etab() {
-        return id_etab;
-    }
+
         public int getId() {
         return id;
     }
@@ -35,9 +33,7 @@ public class Herboriseterie extends Etablissement {
         this.id = id;
     }
 
-    public void setId_etab(int id_etab) {
-        this.id_etab = id_etab;
-    }
+
 
     public int getLivraison() {
         return livraison;
@@ -45,6 +41,14 @@ public class Herboriseterie extends Etablissement {
 
     public void setLivraison(int livraison) {
         this.livraison = livraison;
+    }
+
+    public Etablissement getEtab() {
+        return etab;
+    }
+
+    public void setEtab(Etablissement etab) {
+        this.etab = etab;
     }
 
     

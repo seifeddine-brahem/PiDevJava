@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="327.0" prefWidth="600.0" stylesheets="@../styles/Login.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SplashController">
+    <children>
+      <ImageView fx:id="imgLoading" fitHeight="16.0" fitWidth="179.0" layoutX="220.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="203.0">
+         <image>
+            <Image url="@../images/loading.gif" />
+         </image>
+      </ImageView>
+      <FlowPane alignment="CENTER" hgap="20.0" layoutX="57.0" layoutY="135.0" nodeOrientation="RIGHT_TO_LEFT" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="57.0">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/app-icon.png" />
+               </image>
+            </ImageView>
+            <Label id="lb_title" fx:id="lb_title" alignment="CENTER" style="-fx-text-fill: #50bae7; -fx-font-size: 28;" text="Administration Panel" />
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

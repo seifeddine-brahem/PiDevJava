@@ -7,7 +7,9 @@ package Controllers;
 
 import DataStorage.MyDB;
 import Entities.Categorie;
+import Entities.Utilisateur;
 import Services.CategorieService;
+import Utils.GetConnectedUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -75,6 +77,9 @@ public class CategorieePartController implements Initializable {
     Categorie categorie = new Categorie();
     @FXML
     private TableColumn<?, ?> id_conseil;
+    @FXML
+    private JFXButton btnSupp;
+
     /**
      * Initializes the controller class.
      */
@@ -95,7 +100,8 @@ public class CategorieePartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-         List<Categorie> LC = cs.afficherCategorie();
+         Utilisateur u = GetConnectedUser.GetConnectedUser();        
+         List<Categorie> LC = cs.afficherCategorie(u.getId());
         data = FXCollections.observableArrayList();
         Categorie c;
 
@@ -121,6 +127,7 @@ public class CategorieePartController implements Initializable {
         listPartenaire = cs.listerNomsPartanaire();
         NomUtilisateur.getItems().addAll(listPartenaire);
 
+        btnSupp.setVisible(false);
 
     }    
     
@@ -144,13 +151,16 @@ public class CategorieePartController implements Initializable {
                 categorie = TableCat.getItems().get(TableCat.getSelectionModel().getSelectedIndex());
                 nomCat.setText(categorie.getNom());
                 typeCat.setValue(categorie.getType());
+                
+                btnSupp.setVisible(true);
             }
         });
     }
     
+    @FXML
     public void afficher()
     {
-        List<Categorie> LC = cs.afficherCategorie();
+         List<Categorie> LC = cs.afficherToutCategorie();
         data = FXCollections.observableArrayList();
         Categorie c;
 
@@ -164,7 +174,7 @@ public class CategorieePartController implements Initializable {
     }
     
         @FXML
-    void supprimerCategorie(ActionEvent event)
+    public void supprimerCategorie(ActionEvent event)
     {
         Categorie c1 = TableCat.getSelectionModel().getSelectedItem();
         CategorieService cs = new CategorieService();
@@ -173,7 +183,7 @@ public class CategorieePartController implements Initializable {
     }
     
         @FXML
-    void modifierCategorie(ActionEvent event)
+   public void modifierCategorie(ActionEvent event)
     {
         categorie.setNom(nomCat.getText());
         categorie.setType(typeCat.getValue());

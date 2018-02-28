@@ -11,30 +11,32 @@ package Entities;
  */
 public class CabinetMedical extends Etablissement {
     private int id;
-    private int id_etab;
+    private Etablissement etab;
     private int cnam; 
 
-    public CabinetMedical(int id_etab, int cnam) {
-        this.id_etab = id_etab;
+    public CabinetMedical(Etablissement etab, int cnam) {
+        this.etab = etab;
         this.cnam = cnam;
     }
 
     public CabinetMedical() {
     }
 
-    public CabinetMedical(String nom, String adresse, String date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture, String image, int idUser,int id_etab, int cnam) {
-        super(nom, adresse, date_ouverture, date_fermeture, email, num, fax, page_fb, site_web, heure_ouverture, heure_fermeture, image, idUser);
-        this.id_etab = id_etab;
+    public CabinetMedical(String nom, String adresse, String date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture, String image, Utilisateur user,Etablissement etab, int cnam) {
+        super(nom, adresse, date_ouverture, date_fermeture, email, num, fax, page_fb, site_web, heure_ouverture, heure_fermeture, image, user);
+        this.etab = etab;
         this.cnam = cnam;
     }
 
-    public int getId_etab() {
-        return id_etab;
+    public Etablissement getEtab() {
+        return etab;
     }
 
-    public void setId_etab(int id_etab) {
-        this.id_etab = id_etab;
+    public void setEtab(Etablissement etab) {
+        this.etab = etab;
     }
+
+
 
     public int getCnam() {
         return cnam;

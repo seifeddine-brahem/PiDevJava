@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterEtablissementController">
+   <children>
+      <Label layoutX="152.0" layoutY="12.0" prefHeight="35.0" prefWidth="380.0" text="Vous voulez devenir partenaire dans  ESBE ?">
+         <font>
+            <Font name="Footlight MT Light" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="238.0" layoutY="40.0" text="Merci remplir le reste de ce formulaire" />
+      <HBox alignment="CENTER" layoutX="33.0" layoutY="75.0" prefHeight="14.0" prefWidth="667.0" spacing="2.0">
+         <children>
+            <Label prefHeight="4.0" prefWidth="130.0" style="-fx-background-color: #0073B7; -fx-min-height: 4; -fx-pref-height: 4;" />
+            <Circle fill="#e8e9eb" radius="7.0" stroke="#f39c12" strokeType="INSIDE" strokeWidth="3.0" />
+            <Label prefHeight="4.0" prefWidth="283.0" style="-fx-background-color: #0073B7; -fx-min-height: 4; -fx-pref-height: 4;" />
+            <Circle fill="#e8e9eb" radius="7.0" stroke="#f39c12" strokeType="INSIDE" strokeWidth="3.0" />
+            <Label prefHeight="4.0" prefWidth="130.0" style="-fx-background-color: #0073B7; -fx-min-height: 4; -fx-pref-height: 4;" />
+         </children>
+      </HBox>
+      <VBox layoutX="14.0" layoutY="113.0" prefHeight="294.0" prefWidth="182.0" spacing="20.0">
+         <children>
+            <JFXTextField fx:id="txtNom" focusColor="#0081ff" labelFloat="true" prefHeight="28.0" prefWidth="172.0" promptText="Nom de l'etablissement">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtAdresse" focusColor="#0081ff" labelFloat="true" prefHeight="25.0" prefWidth="343.0" promptText="Adresse">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtDO" focusColor="#0081ff" labelFloat="true" prefHeight="25.0" prefWidth="343.0" promptText="Jour d'ouverture">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtDF" focusColor="#0081ff" labelFloat="true" prefHeight="25.0" prefWidth="343.0" promptText="Jour de fermeture">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtEmail" focusColor="#0081ff" labelFloat="true" prefHeight="28.0" prefWidth="302.0" promptText="Email">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNum" focusColor="#0081ff" labelFloat="true" prefHeight="25.0" prefWidth="343.0" promptText="Numero">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </VBox>
+      <JFXTextField fx:id="txtFax" focusColor="#0081ff" labelFloat="true" layoutX="256.0" layoutY="113.0" prefHeight="28.0" prefWidth="182.0" promptText="Fax">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtFB" focusColor="#0081ff" labelFloat="true" layoutX="256.0" layoutY="161.0" prefHeight="28.0" prefWidth="188.0" promptText="Page Facebook">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtSW" focusColor="#0081ff" labelFloat="true" layoutX="256.0" layoutY="209.0" prefHeight="28.0" prefWidth="188.0" promptText="Site web">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXTextField>
+      <VBox layoutX="256.0" layoutY="260.0" prefHeight="154.0" prefWidth="188.0" spacing="20.0">
+         <children>
+            <JFXTextField fx:id="txtHO" focusColor="#0081ff" labelFloat="true" prefHeight="25.0" prefWidth="343.0" promptText="Heure d'ouverture">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtHF" focusColor="#0081ff" labelFloat="true" prefHeight="25.0" prefWidth="343.0" promptText="Heure de fermeture">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnBackUp1" onAction="#uploadpic" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #00A65A;" text="Image" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="UPLOAD" onMouseClicked="#uploadpic" size="24.0" wrappingWidth="42.285715103149414" />
+               </graphic>
+               <font>
+                  <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+      <JFXComboBox fx:id="combo" layoutX="497.0" layoutY="115.0" onAction="#typeEtab" prefHeight="25.0" prefWidth="182.0" />
+      <JFXComboBox fx:id="combobox4" layoutX="494.0" layoutY="162.0" prefHeight="25.0" prefWidth="188.0" />
+      <JFXTextField fx:id="txt4" labelFloat="true" layoutX="494.0" layoutY="163.0" prefHeight="25.0" prefWidth="188.0" />
+      <JFXCheckBox fx:id="checkbox2" layoutX="494.0" layoutY="214.0" prefHeight="18.0" prefWidth="188.0" />
+      <JFXComboBox fx:id="combobox2" layoutX="495.0" layoutY="211.0" prefHeight="25.0" prefWidth="182.0" />
+      <JFXComboBox fx:id="combobox3" layoutX="494.0" layoutY="260.0" prefHeight="25.0" prefWidth="182.0" />
+      <JFXCheckBox fx:id="checkbox3" layoutX="495.0" layoutY="264.0" prefHeight="18.0" prefWidth="182.0" />
+      <JFXButton fx:id="btnValider" buttonType="RAISED" layoutX="510.0" layoutY="356.0" onAction="#CreerEtab" prefHeight="31.0" prefWidth="130.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Suivant" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <JFXCheckBox fx:id="checkbox1" layoutX="494.0" layoutY="167.0" prefHeight="18.0" prefWidth="182.0" />
+      <JFXComboBox fx:id="combobox1" layoutX="497.0" layoutY="162.0" prefHeight="25.0" prefWidth="182.0" />
+      <JFXTextField fx:id="txt2" labelFloat="true" layoutX="494.0" layoutY="211.0" prefHeight="25.0" prefWidth="188.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjoutEventController">
+   <children>
+      <JFXTextField fx:id="horaire_ouv" focusColor="#0081ff" labelFloat="true" layoutX="86.0" layoutY="189.0" prefHeight="25.0" prefWidth="343.0" promptText="Horaire début">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="horaire_ferm" focusColor="#0081ff" labelFloat="true" layoutX="86.0" layoutY="239.0" prefHeight="25.0" prefWidth="343.0" promptText="horaire fin">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="description" focusColor="#0081ff" labelFloat="true" layoutX="86.0" layoutY="291.0" prefHeight="25.0" prefWidth="343.0" promptText="Description">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="annuler1" buttonType="RAISED" layoutX="257.0" layoutY="555.0" onAction="#retour" prefHeight="31.0" prefWidth="130.0" style="-fx-background-color: #f39c12;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXButton>
+      <DatePicker fx:id="date_ouverture" layoutX="83.0" layoutY="87.0" prefHeight="30.0" prefWidth="349.0" promptText="Date début évènement" />
+      <DatePicker fx:id="date_fin" layoutX="84.0" layoutY="141.0" prefHeight="30.0" prefWidth="346.0" promptText="Date fin évènement" />
+      <JFXComboBox fx:id="categorie" layoutX="83.0" layoutY="517.0" prefHeight="25.0" prefWidth="348.0" promptText="Veuillez choisir une catégorie" />
+      <FontAwesomeIconView fill="WHITE" glyphName="UPLOAD" layoutX="-83.0" layoutY="-38.0" size="24.0" wrappingWidth="42.285715103149414" />
+      <JFXButton fx:id="image" layoutX="79.0" layoutY="343.0" onAction="#uploadPhoto" prefHeight="37.0" prefWidth="355.0" style="-fx-background-color: #00A65A;" text="Image" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="UPLOAD" size="24.0" wrappingWidth="42.285715103149414" />
+         </graphic>
+      </JFXButton>
+      <Label layoutX="175.0" layoutY="14.0" text="Ajouter Evenement">
+         <font>
+            <Font name="Footlight MT Light" size="21.0" />
+         </font>
+      </Label>
+      <Separator layoutX="89.0" layoutY="44.0" prefHeight="10.0" prefWidth="337.0" />
+      <JFXButton fx:id="ajouter" buttonType="RAISED" layoutX="132.0" layoutY="555.0" onAction="#ajouterEvenement" prefHeight="23.0" prefWidth="113.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <ImageView fx:id="pic" fitHeight="121.0" fitWidth="171.0" layoutX="171.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

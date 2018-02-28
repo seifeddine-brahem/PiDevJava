@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CategorieePartController">
+   <children>
+      <Separator layoutX="257.0" layoutY="39.0" prefWidth="200.0" />
+      <TableView fx:id="TableCat" layoutX="28.0" layoutY="70.0" prefHeight="303.0" prefWidth="465.0">
+         <columns>
+            <TableColumn fx:id="id_conseil" minWidth="0.0" prefWidth="0.0" />
+            <TableColumn fx:id="NomCat" prefWidth="175.0" text="Nom catégorie" />
+            <TableColumn fx:id="Prop" prefWidth="146.0" text="Propriétaire" />
+            <TableColumn fx:id="Type" prefWidth="143.0" text="Type" />
+         </columns>
+      </TableView>
+      <Label layoutX="524.0" layoutY="83.0" prefHeight="18.0" prefWidth="159.0" text="Veuillez choisir un nom : " />
+      <JFXComboBox fx:id="NomUtilisateur" layoutX="508.0" layoutY="101.0" prefHeight="28.0" prefWidth="170.0" />
+      <Label fx:id="nomLabel" layoutX="541.0" layoutY="241.0" text="Nom catégorie :" />
+      <Label fx:id="typeLabel" layoutX="575.0" layoutY="301.0" text="Type :" />
+      <JFXTextField fx:id="nomCat" layoutX="502.0" layoutY="261.0" prefHeight="25.0" prefWidth="178.0" />
+      <JFXComboBox fx:id="typeCat" layoutX="505.0" layoutY="341.0" prefHeight="25.0" prefWidth="178.0" />
+      <JFXButton fx:id="btnSupp" buttonType="RAISED" layoutX="337.0" layoutY="396.0" onAction="#supprimerCategorie" prefHeight="14.0" prefWidth="113.0" ripplerFill="#f52020" style="-fx-background-color: #F39C12;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="61.0" layoutY="397.0" onAction="#Ajout" prefHeight="20.0" prefWidth="113.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="546.0" layoutY="161.0" onAction="#chercherCategorieParPartenaire" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #0073B7;" text="Rechercher" textFill="#fffefe">
+         <font>
+            <Font name="Roboto Black" size="13.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14.0" wrappingWidth="19.0" />
+         </graphic>
+      </JFXButton>
+      <Label layoutX="290.0" layoutY="14.0" text="Liste Catégories">
+         <font>
+            <Font name="Footlight MT Light" size="21.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="valider" buttonType="RAISED" layoutX="547.0" layoutY="397.0" onAction="#modifierCategorie" prefHeight="20.0" prefWidth="113.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Valider" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="201.0" layoutY="397.0" onAction="#afficher" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #0073B7;" text="Afficher " textFill="#fffefe">
+         <font>
+            <Font name="Roboto Black" size="13.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

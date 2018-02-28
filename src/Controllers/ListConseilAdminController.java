@@ -111,7 +111,7 @@ public class ListConseilAdminController implements Initializable {
 }
 
     @FXML
-    private void stat(ActionEvent event) throws IOException
+    public void stat(ActionEvent event) throws IOException
     {
         Stage Stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/Presentation/stat.fxml"));
@@ -121,7 +121,7 @@ public class ListConseilAdminController implements Initializable {
     }
     
         @FXML
-    private void lister(ActionEvent event) throws IOException
+    public void lister(ActionEvent event) throws IOException
     {
         Stage Stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/Presentation/ListeUtilisateurs.fxml"));
@@ -131,7 +131,7 @@ public class ListConseilAdminController implements Initializable {
     }
     
             @FXML
-    private void demande(ActionEvent event) throws IOException
+    public void demande(ActionEvent event) throws IOException
     {
         Stage Stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/Presentation/ListerDemandesAdmin.fxml"));
@@ -143,7 +143,7 @@ public class ListConseilAdminController implements Initializable {
     
         
             @FXML
-    private void event(ActionEvent event) throws IOException
+    public void event(ActionEvent event) throws IOException
     {
         Stage Stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/Presentation/ListerEventsAdmin.fxml"));

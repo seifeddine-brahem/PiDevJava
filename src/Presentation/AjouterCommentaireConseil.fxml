@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="500.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterCommentaireConseilController">
+   <children>
+      <Label layoutX="113.0" layoutY="40.0" text="Vous voulez donner votre avis ?">
+         <font>
+            <Font name="Footlight MT Light" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="76.0" text="Veuillez écrire votre commentaire" />
+      <Label layoutX="70.0" layoutY="497.0" prefHeight="25.0" prefWidth="103.0" text="Commentaire :" />
+      <JFXTextField fx:id="commentaire" layoutX="188.0" layoutY="453.0" prefHeight="57.0" prefWidth="243.0" />
+      <TableView fx:id="tableCommentaire" layoutX="62.0" layoutY="259.0" prefHeight="145.0" prefWidth="387.0">
+         <columns>
+            <TableColumn fx:id="contenu" prefWidth="244.0" text="Contenu" />
+            <TableColumn fx:id="proprietaire" prefWidth="142.0" text="Propriétaire" />
+         </columns>
+      </TableView>
+      <Label fx:id="desc" layoutX="354.0" layoutY="159.0" text="Description :" />
+      <Label layoutX="199.0" layoutY="160.0" text="Description :" />
+      <ImageView fx:id="img" fitHeight="130.0" fitWidth="145.0" layoutX="39.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton fx:id="Annuler" buttonType="RAISED" layoutX="253.0" layoutY="551.0" onAction="#retour" prefHeight="35.0" prefWidth="113.0" ripplerFill="#f52020" style="-fx-background-color: #F39C12;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="ajouter" buttonType="RAISED" layoutX="132.0" layoutY="551.0" onAction="#ajouterCommentaire" prefHeight="35.0" prefWidth="113.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <Separator layoutX="89.0" layoutY="66.0" prefHeight="10.0" prefWidth="337.0" />
+   </children>
+</AnchorPane>

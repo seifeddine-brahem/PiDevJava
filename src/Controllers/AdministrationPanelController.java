@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import static Controllers.ProfilPartenaireController.mainMain;
 import static Utils.GetConnectedUser.main;
 import DataStorage.MyDB;
 import Entities.Utilisateur;
@@ -67,7 +68,7 @@ public class AdministrationPanelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-      
+       mainMain=main;
     }    
     public void stat(ActionEvent event) throws IOException
     {
@@ -123,7 +124,11 @@ public class AdministrationPanelController implements Initializable {
         main.autosize();
     }
 
-
+    public static AnchorPane getMainMain()
+    {
+        return mainMain;
+    }
+    
     
     
     

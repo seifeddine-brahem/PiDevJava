@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListerDemandesAdminController">
+   <children>
+      <ListView fx:id="listDemandes" layoutX="90.0" layoutY="93.0" prefHeight="347.0" prefWidth="522.0" />
+      <Separator layoutX="16.0" layoutY="73.0" prefHeight="20.0" prefWidth="669.0" />
+      <Label id="lb_title" fx:id="lb_title" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="39.0" text="Liste des demandes de partenariat" />
+   </children>
+</AnchorPane>

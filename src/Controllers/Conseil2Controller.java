@@ -8,7 +8,9 @@ package Controllers;
 import DataStorage.MyDB;
 import Entities.Categorie;
 import Entities.Conseil;
+import Entities.Utilisateur;
 import Services.ConseilService;
+import Utils.GetConnectedUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
@@ -78,14 +80,10 @@ public class Conseil2Controller extends Application implements Initializable {
     @FXML
     private TableColumn<Conseil, String> proprietaire;
 
-    @FXML
-    private Button RechercherNom;
 
     @FXML
     private Button AjouterButton;
 
-    @FXML
-    private Button ModifierButton;
 
     @FXML
     private TableView<Conseil> TableConseil;
@@ -108,17 +106,7 @@ public class Conseil2Controller extends Application implements Initializable {
      */
     Connection conn;
     @FXML
-    private AnchorPane event;
-    @FXML
-    private AnchorPane ajout;
-    @FXML
-    private AnchorPane modif;
-    @FXML
-    private AnchorPane supprimer;
-    @FXML
     private JFXButton supprimerConseil;
-    @FXML
-    private Button raffraichir;
     @FXML
     private JFXComboBox<String> categorie_modif;
     @FXML
@@ -130,21 +118,8 @@ public class Conseil2Controller extends Application implements Initializable {
     @FXML
     private JFXButton valider;
     @FXML
-    private AnchorPane hedha;
-    @FXML
-    private Color x21;
-    @FXML
-    private Font x11;
-    @FXML
-    private Color x4;
-    @FXML
-    private Font x3;
-    @FXML
     private TableColumn<Conseil, String> image;
 
-    public Conseil2Controller() {
-        this.conn = MyDB.getinstance().getConnexion();
-    }
 
     @FXML
     public void Ajout(ActionEvent event) throws IOException {
@@ -185,8 +160,10 @@ public class Conseil2Controller extends Application implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        List<Conseil> LC = cs.afficherConseils();
+    public void initialize(URL location, ResourceBundle resources) 
+    {
+        Utilisateur u = GetConnectedUser.GetConnectedUser();        
+        List<Conseil> LC = cs.afficherConseils(u.getId());
         data = FXCollections.observableArrayList();
         Conseil c;
 
@@ -220,6 +197,9 @@ public class Conseil2Controller extends Application implements Initializable {
         List<String> listCat = new ArrayList<>();
         listCat = cs.listerNomsCategorie();
         categorie_modif.getItems().addAll(listCat);
+        
+        
+        supprimerConseil.setVisible(false);
 
     }
 
@@ -255,7 +235,7 @@ public class Conseil2Controller extends Application implements Initializable {
 
     }
 
-    private void setCellValueFromTableToText() {
+    public void setCellValueFromTableToText() {
         TableConseil.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) 
@@ -274,6 +254,8 @@ public class Conseil2Controller extends Application implements Initializable {
                 conseil = TableConseil.getItems().get(TableConseil.getSelectionModel().getSelectedIndex());
                 categorie_modif.setValue(conseil.getNom_categorie());
                 description_modif.setText(conseil.getDescription());
+                
+                supprimerConseil.setVisible(true);
             }
         });
 
@@ -357,7 +339,7 @@ public class Conseil2Controller extends Application implements Initializable {
 
      */
     @FXML
-    private void chercherConseil(ActionEvent event) {
+    public void chercherConseil(ActionEvent event) {
         String s = NomCategorie.getSelectionModel().getSelectedItem();
         System.out.println(s);
         ConseilService cs = new ConseilService();

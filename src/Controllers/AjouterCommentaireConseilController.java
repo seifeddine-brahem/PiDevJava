@@ -16,6 +16,7 @@ import Utils.GetConnectedUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import esbe.CommentaireConseil;
+import esbe.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -25,7 +26,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -33,6 +38,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.w3c.dom.Comment;
 
 /**
@@ -64,8 +71,6 @@ public class AjouterCommentaireConseilController implements Initializable {
     private TableColumn<CommentaireConseill, String> contenu;
     @FXML
     private TableColumn<CommentaireConseill, String> proprietaire;
-    @FXML
-    private JFXButton btnClear;
     /**
      * Initializes the controller class.
      */
@@ -101,21 +106,46 @@ public class AjouterCommentaireConseilController implements Initializable {
     }
 
     @FXML
-    private void ajouterCommentaire(ActionEvent event) throws IOException 
+    public void ajouterCommentaire(ActionEvent event) throws IOException 
     {
         Utilisateur u = GetConnectedUser.GetConnectedUser();
         CommentaireConseilService cs = new CommentaireConseilService();
         CommentaireConseill c = new CommentaireConseill(u,commentaire.getText(),e);       
         cs.ajouterCommentaireConseil(c);
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("/Presentation/AjouterCommentaireEvent.fxml"));
-//        Parent tableView = loader.load();
-//        Scene tablScene = new Scene(tableView); 
-//        Stage primary = new Stage();
-//        primary.setScene(tablScene);
-//        primary.show();
-//        annuler()
-        
+ 
+        Parent root = FXMLLoader.load(getClass().getResource("/Presentation/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Presentation/ConseilUtilisateur.fxml"));
+        AnchorPane name = (AnchorPane) loader.load();          
+        ProfileController profilController = new ProfileController();
+        profilController.getMainMain().getChildren().add(name);
+        profilController.getMainMain().autosize();
+        User u1 = new User();
+        Scene scene = new Scene(root);
+        u1.getStageUser().setScene(scene);
+        u1.getStageUser().show();
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }    
+
+    @FXML
+    public void retour(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("/Presentation/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Presentation/ConseilUtilisateur.fxml"));
+        AnchorPane name = (AnchorPane) loader.load();          
+        ProfileController profilController = new ProfileController();
+        profilController.getMainMain().getChildren().add(name);
+        profilController.getMainMain().autosize();
+        User u = new User();
+        Scene scene = new Scene(root);
+        u.getStageUser().setScene(scene);
+        u.getStageUser().show();
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
     
 }

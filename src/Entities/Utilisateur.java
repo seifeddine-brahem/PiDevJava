@@ -35,14 +35,13 @@ public class Utilisateur {
    private String salt = null;
    private Date last_login = null;
    private int locked = 0;
-   private int expired = 0;
+   private int expired;
    private Date expires_at = null;
    private String confirmation_token = null;
    private Date password_requested_at = null;
    //this.roles = "user" ;
    private int credentials_expired = 0;
    private Date credentials_expire_at = null;
-   private String status; 
    
 
     public int getId() {
@@ -269,7 +268,7 @@ public class Utilisateur {
         this.specialite_partenaire = specialite_partenaire;
     }
 
-    public Utilisateur(String nom, String prenom, String username, String email, String password, String roles, String adresse, LocalDate date_naissance, int code_postal, String sexe, int num_tel, String photo_profil, String pays,String status, String type_partenaire, String specialite_partenaire) {
+    public Utilisateur(String nom, String prenom, String username, String email, String password, String roles, String adresse, LocalDate date_naissance, int code_postal, String sexe, int num_tel, String photo_profil, String pays, String type_partenaire, String specialite_partenaire) {
        // this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -288,7 +287,7 @@ public class Utilisateur {
         this.type_partenaire = type_partenaire;
         this.specialite_partenaire = specialite_partenaire;
         this.roles = roles;
-        this.enabled = 1;
+        this.enabled=enabled;
         this.salt = null;
         this.last_login = null;
         this.locked = 0;
@@ -298,11 +297,10 @@ public class Utilisateur {
         this.password_requested_at = null;
         this.credentials_expired = 0;
         this.credentials_expire_at = null;
-        this.status=status;
     }
     
     
-public Utilisateur(String nom, String prenom, String username, String email, String password, String roles, String adresse, LocalDate date_naissance, int code_postal, String sexe, int num_tel, String pays, String status, String type_partenaire, String specialite_partenaire) {
+public Utilisateur(String nom, String prenom, String username, String email, String password, String roles, String adresse, LocalDate date_naissance, int code_postal, String sexe, int num_tel, String pays, String type_partenaire, String specialite_partenaire) {
        // this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -318,11 +316,10 @@ public Utilisateur(String nom, String prenom, String username, String email, Str
         this.num_tel = num_tel;
         this.photo_profil = photo_profil;
         this.pays = pays;
-        this.status = status;
         this.type_partenaire = type_partenaire;
         this.specialite_partenaire = specialite_partenaire;
         this.roles = roles;
-        this.enabled = 1;
+        this.enabled = enabled;
         this.salt = null;
         this.last_login = null;
         this.locked = 0;
@@ -334,13 +331,6 @@ public Utilisateur(String nom, String prenom, String username, String email, Str
         this.credentials_expire_at = null;
     }
     
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getStatus(){
-        return status;
-    }
 
     public Utilisateur() {
     }

@@ -55,7 +55,7 @@ public class ProfilPartenaireController implements Initializable {
     }    
 
     @FXML
-    private void event(ActionEvent event) throws IOException 
+    public void eventPart(ActionEvent event) throws IOException 
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Presentation/EventPartenaire.fxml"));
@@ -71,7 +71,7 @@ public class ProfilPartenaireController implements Initializable {
     }
 
     @FXML
-    private void categorie(ActionEvent event) throws IOException 
+    public void categoriePart(ActionEvent event) throws IOException 
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Presentation/CategoriePartenaire.fxml"));
@@ -83,7 +83,7 @@ public class ProfilPartenaireController implements Initializable {
     }
 
     @FXML
-    private void conseil(ActionEvent event) throws IOException 
+    public void conseilPart(ActionEvent event) throws IOException 
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Presentation/ConseilPartenaire.fxml"));

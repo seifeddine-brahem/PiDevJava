@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="690.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StatAdminController">
+   <children>
+      <Group fx:id="groupLadies" layoutX="426.0" layoutY="14.0">
+         <children>
+            <Pane layoutX="47.0" layoutY="32.0" prefHeight="76.0" prefWidth="142.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);">
+               <children>
+                  <Pane layoutX="31.0" layoutY="-29.0" prefHeight="100.0" prefWidth="88.0" style="-fx-background-color: #00B3A0; -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="53.0" layoutX="18.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/Female%20-%2001.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label layoutX="11.0" layoutY="86.0" minHeight="5.0" prefHeight="5.0" prefWidth="181.0" style="-fx-background-color: #5DB95C; -fx-border-radius: 5; -fx-background-radius: 5;" />
+               </children>
+            </Pane>
+            <Label fx:id="nb_femme" alignment="TOP_RIGHT" layoutX="193.0" layoutY="71.0" prefHeight="35.0" prefWidth="35.0">
+               <font>
+                  <Font name="Roboto Black" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="194.0" layoutY="47.0" prefHeight="22.0" prefWidth="53.0" text="Femmes" textFill="#8d8b8b">
+               <font>
+                  <Font name="Roboto Black" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="123.0" prefHeight="20.0" prefWidth="170.0" text="Nombres total de femmes">
+               <font>
+                  <Font name="Roboto Regular" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="nb_femmes" layoutX="194.0" layoutY="73.0" prefHeight="30.0" prefWidth="22.0" />
+         </children>
+      </Group>
+      <Group fx:id="groupGents" layoutX="150.0" layoutY="14.0" />
+      <Group fx:id="groupRegistered" layoutX="204.0" layoutY="-9.0" />
+      <Group fx:id="groupGents1" layoutX="204.0" layoutY="-9.0" />
+      <Group fx:id="groupLadies2" layoutX="201.0" layoutY="8.0">
+         <children>
+            <Pane layoutX="47.0" layoutY="32.0" prefHeight="76.0" prefWidth="142.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);">
+               <children>
+                  <Label layoutX="11.0" layoutY="85.0" minHeight="5.0" prefHeight="5.0" prefWidth="181.0" style="-fx-background-color: #5DB95C; -fx-border-radius: 5; -fx-background-radius: 5;" />
+               </children>
+            </Pane>
+            <Label fx:id="nb_homme" alignment="TOP_RIGHT" layoutX="194.0" layoutY="71.0" prefHeight="35.0" prefWidth="47.0">
+               <font>
+                  <Font name="Roboto Black" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="190.0" layoutY="47.0" prefHeight="22.0" prefWidth="67.0" text="Hommes" textFill="#8d8b8b">
+               <font>
+                  <Font name="Roboto Black" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="125.0" prefHeight="20.0" prefWidth="170.0" text="Nombres total d'hommes">
+               <font>
+                  <Font name="Roboto Regular" size="14.0" />
+               </font>
+            </Label>
+            <Pane layoutX="71.0" layoutY="9.0" prefHeight="92.0" prefWidth="89.0" style="-fx-background-color: rgb(0, 170, 207); -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);">
+               <children>
+                  <ImageView fitHeight="68.0" fitWidth="53.0" layoutX="20.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/Male%20-%2001.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label fx:id="nb_hommes" layoutX="198.0" layoutY="73.0" prefHeight="30.0" prefWidth="38.0" />
+         </children>
+      </Group>
+      <Group fx:id="groupLadies3" layoutX="-40.0" layoutY="7.0">
+         <children>
+            <Pane layoutX="47.0" layoutY="32.0" prefHeight="76.0" prefWidth="142.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);" />
+            <Label fx:id="nb_comptes" alignment="TOP_RIGHT" layoutX="197.0" layoutY="70.0" prefHeight="35.0" prefWidth="37.0">
+               <font>
+                  <Font name="Roboto Black" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="194.0" layoutY="47.0" prefHeight="22.0" prefWidth="67.0" text="Comptes" textFill="#8d8b8b">
+               <font>
+                  <Font name="Roboto Black" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="79.0" layoutY="127.0" prefHeight="20.0" prefWidth="198.0" text="Le nombre total des comptes">
+               <font>
+                  <Font name="Roboto Regular" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="115.0" minHeight="5.0" prefHeight="5.0" prefWidth="163.0" style="-fx-background-color: #5DB95C; -fx-border-radius: 5; -fx-background-radius: 5;" />
+            <Label fx:id="nb_comptes" layoutX="194.0" layoutY="72.0" prefHeight="30.0" prefWidth="37.0" />
+         </children>
+      </Group>
+      <Pane layoutX="32.0" layoutY="14.0" prefHeight="89.0" prefWidth="88.0" style="-fx-background-color: #1564C0; -fx-background-radius: 4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.1), 6.0, 0.7, 0.0,1.5);">
+         <children>
+            <ImageView fitHeight="68.0" fitWidth="69.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/register.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <PieChart fx:id="PieChart" layoutX="485.0" layoutY="156.0" prefHeight="266.0" prefWidth="200.0" stylesheets="@piecharrtt.css" />
+      <BarChart fx:id="pays" layoutX="242.0" layoutY="172.0" prefHeight="250.0" prefWidth="260.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <LineChart fx:id="LineChart" layoutY="176.0" prefHeight="274.0" prefWidth="270.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </LineChart>
+   </children>
+</AnchorPane>

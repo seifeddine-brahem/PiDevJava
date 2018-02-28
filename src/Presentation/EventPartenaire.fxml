@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventPartController">
+   <children>
+      <Separator layoutX="275.0" layoutY="32.0" prefWidth="200.0" />
+      <Text fontSmoothingType="LCD" layoutX="308.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evènement à venir">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tableEvent" layoutX="-2.0" layoutY="54.0" prefHeight="189.0" prefWidth="594.0">
+         <columns>
+            <TableColumn fx:id="date_ouverture" prefWidth="109.0" text="Date ouverture" />
+            <TableColumn fx:id="date_fermeture" prefWidth="107.0" text="Date fermeture" />
+            <TableColumn fx:id="horaire1" prefWidth="99.0" text="Horaire debut" />
+            <TableColumn fx:id="horaire2" prefWidth="86.0" text="Horaire fin " />
+            <TableColumn fx:id="description" prefWidth="83.0" text="Description" />
+            <TableColumn fx:id="image" prefWidth="109.0" text="Image" />
+         </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b3b8bc" height="80.0" layoutX="593.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f54" height="80.0" layoutX="593.0" layoutY="177.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d504c1" height="80.0" layoutX="593.0" layoutY="89.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2575b2" height="80.0" layoutX="593.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <DatePicker fx:id="date" layoutX="598.0" layoutY="282.0" onAction="#chercherParDate" prefHeight="25.0" prefWidth="87.0" />
+      <AnchorPane fx:id="aujourdhui" layoutX="632.0" layoutY="16.0" prefHeight="30.0" prefWidth="30.0" stylesheets="@esbe.css" />
+      <AnchorPane fx:id="demain" layoutX="626.0" layoutY="103.0" prefHeight="30.0" prefWidth="30.0" />
+      <AnchorPane fx:id="semaine" layoutX="626.0" layoutY="194.0" prefHeight="30.0" prefWidth="30.0" />
+      <JFXButton fx:id="todayButton" layoutX="606.0" layoutY="53.0" onAction="#chercherDateJour" text="Ajourd'hui" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="610.0" layoutY="140.0" onAction="#chercherEvenementDemain" text="Demain" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="595.0" layoutY="226.0" onAction="#chercherSemaine" text="Cette semaine" textFill="#fffefe">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="598.0" layoutY="320.0" onAction="#chercherParDate" text="Choisir date" textFill="#fcf9f9">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <Text fontSmoothingType="LCD" layoutX="522.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégories évenement">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <JFXListView fx:id="listCat" layoutX="475.0" layoutY="373.0" onMouseClicked="#affichagerCat" prefHeight="73.0" prefWidth="211.0" />
+      <DatePicker fx:id="date_ouverture1" layoutX="14.0" layoutY="293.0" prefHeight="25.0" prefWidth="161.0" promptText="Date début évènement" />
+      <DatePicker fx:id="date_fin1" layoutX="14.0" layoutY="347.0" prefHeight="25.0" prefWidth="161.0" promptText="Date fin évènement" />
+      <JFXTextField fx:id="horaire_ouv" layoutX="14.0" layoutY="404.0" prefHeight="25.0" prefWidth="161.0" />
+      <JFXTextField fx:id="description1" layoutX="195.0" layoutY="288.0" prefHeight="30.0" prefWidth="161.0" />
+      <JFXTextField fx:id="horaire_ferm" layoutX="195.0" layoutY="353.0" prefHeight="25.0" prefWidth="161.0" />
+      <JFXButton fx:id="btnSupprimer" buttonType="RAISED" layoutX="350.0" layoutY="403.0" onAction="#supprimerEvenement" prefHeight="31.0" prefWidth="113.0" ripplerFill="#f52020" style="-fx-background-color: #F39C12;" text="Supprimer " textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="buttonAjout" buttonType="RAISED" layoutX="384.0" layoutY="263.0" onAction="#Ajout" prefHeight="31.0" prefWidth="182.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Créer Evenement" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="modifier" buttonType="RAISED" layoutX="219.0" layoutY="402.0" onAction="#modifierEvent" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #008F82;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="384.0" layoutY="308.0" onAction="#afficher" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #0073B7;" text="Afficher " textFill="#fffefe">
+         <font>
+            <Font name="Roboto Black" size="13.0" />
+         </font>
+      </JFXButton>
+   </children>
+   <stylesheets>
+      <URL value="@esbe.css" />
+      <URL value="@../styles/AddProfile.css" />
+   </stylesheets>
+</AnchorPane>

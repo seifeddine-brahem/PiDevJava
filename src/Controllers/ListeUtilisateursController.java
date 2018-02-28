@@ -45,6 +45,8 @@ import javafx.util.Duration;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 
 /**
@@ -190,7 +192,7 @@ public class ListeUtilisateursController implements Initializable {
     }
 
     @FXML
-    private void stat(ActionEvent event) throws IOException 
+    public void stat(ActionEvent event) throws IOException 
     {
         Stage Stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/Presentation/stat.fxml"));
@@ -200,7 +202,7 @@ public class ListeUtilisateursController implements Initializable {
     }
     
     
-      private void saveXLSFile(File file) throws SQLException, IOException 
+      public void saveXLSFile(File file) throws SQLException, IOException 
       {
         try {
 
@@ -217,7 +219,7 @@ public class ListeUtilisateursController implements Initializable {
             row1.createCell(4).setCellValue("adresse");
             row1.createCell(5).setCellValue("email");
             row1.createCell(6).setCellValue("enabled");
-            row1.createCell(6).setCellValue("roles");
+            row1.createCell(7).setCellValue("roles");
             //row1.createCell(6).setCellValue("date_naissance");
 //            row1.createCell(6).setCellValue("code_postal");
 //            row1.createCell(6).setCellValue("sexe");
@@ -251,12 +253,12 @@ public class ListeUtilisateursController implements Initializable {
             fileOut.flush();
             fileOut.close();
 
-//            TrayNotification tn = new TrayNotification("NEW EXCEL FILE", "Specified excel file successfully generated", NotificationType.SUCCESS);
-//            tn.showAndDismiss(Duration.seconds(1));
+            TrayNotification tn = new TrayNotification("NEW EXCEL FILE", "Specified excel file successfully generated", NotificationType.SUCCESS);
+            tn.showAndDismiss(Duration.seconds(3));
      } catch (SQLException | IOException e)
      {
-//            TrayNotification tn = new TrayNotification("NEW EXCEL FILE", "Could not generate specified file", NotificationType.ERROR);
-//            tn.showAndDismiss(Duration.seconds(1));
+            TrayNotification tn = new TrayNotification("NEW EXCEL FILE", "Could not generate specified file", NotificationType.ERROR);
+            tn.showAndDismiss(Duration.seconds(3));
              System.err.println(e);
 
         }
@@ -265,7 +267,7 @@ public class ListeUtilisateursController implements Initializable {
       
       
              @FXML
-    void generate_excel(ActionEvent event) throws SQLException, IOException {
+    public void generate_excel(ActionEvent event) throws SQLException, IOException {
        
         FileChooser chooser = new FileChooser();
         // Set extension filter
@@ -281,7 +283,7 @@ public class ListeUtilisateursController implements Initializable {
     }
 
     @FXML
-    private void ShowRapport(ActionEvent event)
+    public void ShowRapport(ActionEvent event)
     {
         PrintReport report = new PrintReport();
         report.showReport();

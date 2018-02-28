@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StatAdminController">
+   <children>
+      <PieChart fx:id="PieChart" layoutX="456.0" layoutY="306.0" prefHeight="176.0" prefWidth="208.0" />
+      <Label layoutX="254.0" layoutY="57.0" prefHeight="17.0" prefWidth="157.0" text="Sexe utilisateur" />
+      <BarChart fx:id="pays" layoutX="128.0" layoutY="306.0" prefHeight="176.0" prefWidth="253.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>

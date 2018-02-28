@@ -167,7 +167,7 @@ public class EventUSerController implements Initializable {
   
     
         @FXML
-        void chercherParDate(ActionEvent event)
+       public void chercherParDate(ActionEvent event)
     {
         tableEvent.setVisible(true);
 
@@ -193,7 +193,7 @@ public class EventUSerController implements Initializable {
     }
  
         @FXML
-    void chercherEvenementDemain(ActionEvent event)
+    public void chercherEvenementDemain(ActionEvent event)
     {
         tableEvent.setVisible(true);
         List<Evenement> LE = es.chercherEvenementDemain();
@@ -222,7 +222,7 @@ public class EventUSerController implements Initializable {
     }
     
         @FXML
-    void chercherSemaine(ActionEvent event)
+   public void chercherSemaine(ActionEvent event)
     {
        tableEvent.setVisible(true);
         List<Evenement> LE = es.chercherEvenementSemaine();
@@ -251,7 +251,7 @@ public class EventUSerController implements Initializable {
     }
     
     @FXML
-    void chercherDateJour() 
+  public  void chercherDateJour() 
     {
         tableEvent.setVisible(true);
        List<Evenement> LE = es.chercherEvenementAujourdhui();
@@ -275,7 +275,7 @@ public class EventUSerController implements Initializable {
 
 
     @FXML
-    private void affichagerCat(MouseEvent event) {
+    public void affichagerCat(MouseEvent event) {
         tableEvent.setVisible(true);
             String  cat= listCat.getSelectionModel().getSelectedItem();
         List<Evenement> LE = es.chercherEvenementParCategorie(cat);

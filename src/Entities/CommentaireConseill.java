@@ -63,9 +63,12 @@ public class CommentaireConseill
 
     @Override
     public String toString() {
-        return "CommentaireConseill{" + "id_commentaire=" + id_commentaire + ", user=" + user + ", contenu=" + contenu + ", conseil=" + conseil + '}';
+        return "CommentaireConseill{" + "id_commentaire=" + id_commentaire + ", contenu=" + contenu + '}';
     }
+    
+    
 
+ 
     
     
     

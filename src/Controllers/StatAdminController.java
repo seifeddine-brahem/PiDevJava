@@ -69,16 +69,22 @@ public class StatAdminController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb) 
+    public void initialize(URL url, ResourceBundle rb)            
     {
-         
-        AdminService us=  new AdminService();
         
+        
+    AdminService us=  new AdminService(); 
+    
+    nb_comptes.setText(String.valueOf(us.CalculerComptes()));
+    nb_femme.setText(String.valueOf(us.CalculerFemme()));
+    nb_homme.setText(String.valueOf(us.CalculerFemme()));
     ObservableList<PieChart.Data> pieChartData= FXCollections.observableArrayList(
     new PieChart.Data("Femme", us.CalculerFemme()),
     new PieChart.Data("Homme",us.CalculerHomme())
     );
+    
     PieChart.setData(pieChartData);
     PieChart.setData(pieChartData);
 
@@ -93,13 +99,7 @@ public class StatAdminController implements Initializable {
      set1.getData().add(new XYChart.Data("Turquie", us.CalculerTurquie()));
      
      
-     pays.getData().addAll(set1);
-     
-     
-     
-     
-
-
+    pays.getData().addAll(set1);
     AdminService des= new AdminService();
     XYChart.Series series = new XYChart.Series(); //Make a new XYChart object
     //Add Data

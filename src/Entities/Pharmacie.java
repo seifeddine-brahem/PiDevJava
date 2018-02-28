@@ -13,14 +13,15 @@ package Entities;
  */
 public class Pharmacie extends Etablissement{
     private int id;
+    private Etablissement etab;
    private String type;
 
     public Pharmacie() {
     }
 
-    public Pharmacie(int id_etab, String type, String nom, String adresse, String date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture, String image, int idUser) {
-        super(nom, adresse, date_ouverture, date_fermeture, email, num, fax, page_fb, site_web, heure_ouverture, heure_fermeture, image, idUser);
-        
+    public Pharmacie(Etablissement etab, String type, String nom, String adresse, String date_ouverture, String date_fermeture, String email, int num, int fax, String page_fb, String site_web, int heure_ouverture, int heure_fermeture, String image, Utilisateur user) {
+        super(nom, adresse, date_ouverture, date_fermeture, email, num, fax, page_fb, site_web, heure_ouverture, heure_fermeture, image, user);
+        this.etab=etab;
         this.type = type;
     }
 
@@ -42,6 +43,14 @@ public class Pharmacie extends Etablissement{
     
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Etablissement getEtab() {
+        return etab;
+    }
+
+    public void setEtab(Etablissement etab) {
+        this.etab = etab;
     }
 
    

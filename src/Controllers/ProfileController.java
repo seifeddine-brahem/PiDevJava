@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import static Controllers.ProfilPartenaireController.mainMain;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,8 +45,9 @@ public class ProfileController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        mainMain=main;
     }    
     
     
@@ -65,7 +67,7 @@ public class ProfileController implements Initializable {
     {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Presentation/DemandePartenariat.fxml"));
+        loader.setLocation(getClass().getResource("/Presentation/AjouterEtablissement.fxml"));
         Stage stage = (Stage)main.getScene().getWindow();
         AnchorPane name = (AnchorPane)loader.load();
         main.getChildren().add(name);
@@ -81,6 +83,11 @@ public class ProfileController implements Initializable {
         AnchorPane name = (AnchorPane)loader.load();
         main.getChildren().add(name);
         main.autosize();        
+    }
+        
+    public static AnchorPane getMainMain()
+    {
+        return mainMain;
     }
     
     

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListConseilAdminController">
+   <children>
+      <TableView fx:id="TableConseil" layoutX="3.0" layoutY="94.0" prefHeight="312.0" prefWidth="695.0">
+         <columns>
+            <TableColumn fx:id="id_conseil" minWidth="0.0" prefWidth="0.0" />
+            <TableColumn fx:id="description" prefWidth="242.0" text="Description" />
+            <TableColumn fx:id="categorie" prefWidth="163.0" text="Catégorie" />
+            <TableColumn fx:id="proprietaire" prefWidth="157.0" text="Propriétaire" />
+            <TableColumn fx:id="image" prefWidth="132.0" text="Image" />
+         </columns>
+      </TableView>
+      <Separator layoutX="13.0" layoutY="73.0" prefHeight="4.0" prefWidth="679.0" />
+      <Label id="lb_title" fx:id="lb_title" alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="41.0" text="Liste des conseils" />
+   </children>
+</AnchorPane>

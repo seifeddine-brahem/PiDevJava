@@ -13,18 +13,22 @@ public class Categorie
 {
     private int id_categorie;
     private String nom;
-    private int id_user; 
+    private String type;
+    private String nom_user;
+    //private int id_user;
+    private Utilisateur user;
 
     public Categorie()
     {
+        user=new Utilisateur();
     }
 
-    public Categorie(String nom,int id_user)
-    {
-        //this.id_categorie = id_categorie;
+    public Categorie(String nom, String type, Utilisateur user) {
         this.nom = nom;
-        this.id_user=id_user;
+        this.type = type;
+        this.user = user;
     }
+
 
     public int getId_categorie()
     {
@@ -36,9 +40,31 @@ public class Categorie
         return nom;
     }
 
-    public int getId_user()
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
+    
+    
+    public String getType() 
     {
-        return id_user;
+        return type;
+    }
+
+    public String getNom_user() {
+        return nom_user;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setNom_user(String nom_user) {
+        this.nom_user = nom_user;
     }
 
     
@@ -52,26 +78,14 @@ public class Categorie
         this.nom = nom;
     }
 
-    public void setId_user(int id_user)
-    {
-        this.id_user = id_user;
+    @Override
+    public String toString() {
+        return "Categorie{" + "id_categorie=" + id_categorie + ", nom=" + nom + ", type=" + type + '}';
     }
 
-    @Override
-    public String toString()
+    public String toString1()
     {
-        return "Categorie{" + "id_categorie=" + id_categorie + ", nom=" + nom + ", id_user=" + id_user + '}';
+        return ("Nom: "+nom);
     }
        
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

@@ -228,7 +228,33 @@ public class AdminService implements IAdmin
         }
     return (nb);  
     
-}
+    }
+    
+    @Override
+    public int CalculerComptes() 
+    {
+        ResultSet rs;       
+        String sql= "SELECT count(id) AS c FROM `fos_user`";
+        int nb=0;
+        try
+        {
+         Statement stl = conn.createStatement();
+         rs=stl.executeQuery(sql);
+         while (rs.next())
+        {
+            nb = rs.getInt("c");
+        }      
+        }
+        catch (SQLException ex)       
+        {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+    return (nb);  
+    }
+    
+    
     
       @Override
     public int CalculerHomme() 

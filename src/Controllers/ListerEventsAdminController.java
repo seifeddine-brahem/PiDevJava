@@ -107,16 +107,6 @@ public class ListerEventsAdminController implements Initializable {
   
             }    
 
-    @FXML
-    private void lister(ActionEvent event) {
-    }
 
-    @FXML
-    private void stat(ActionEvent event) {
-    }
-
-    @FXML
-    private void demande(ActionEvent event) {
-    }
     
 }

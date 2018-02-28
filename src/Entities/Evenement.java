@@ -22,29 +22,28 @@ public class Evenement
     private String horaire_com;
     private String horaire_fin;
     private String description;
-    private String image;
-    private int id_categorie;
-    private int id_user;
+    private String image;   
+    private Categorie categorie;
+    private Utilisateur user;
+    private String nom_categorie;
 
 
     public Evenement()
     {
+        user= new Utilisateur();
+        categorie= new Categorie();
     }
 
-    public Evenement(LocalDate date_debut, LocalDate date_fin, String horaire_com, String horaire_fin, String description, String image, int id_categorie, int id_user)
-    {
+    public Evenement(LocalDate date_debut, LocalDate date_fin, String horaire_com, String horaire_fin, String description, String image, Categorie categorie, Utilisateur user) {
         this.date_debut = date_debut;
         this.date_fin = date_fin;
         this.horaire_com = horaire_com;
         this.horaire_fin = horaire_fin;
         this.description = description;
         this.image = image;
-        this.id_categorie = id_categorie;
-        this.id_user = id_user;
+        this.categorie = categorie;
+        this.user = user;
     }
-
-    
-   
 
     public int getId_event() {
         return id_event;
@@ -74,12 +73,12 @@ public class Evenement
         return image;
     }
 
-    public int getId_categorie() {
-        return id_categorie;
+    public Categorie getCategorie() {
+        return categorie;
     }
 
-    public int getId_user() {
-        return id_user;
+    public Utilisateur getUser() {
+        return user;
     }
 
     public void setId_event(int id_event) {
@@ -110,20 +109,29 @@ public class Evenement
         this.image = image;
     }
 
-    public void setId_categorie(int id_categorie) {
-        this.id_categorie = id_categorie;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
+    public String getNom_categorie() {
+        return nom_categorie;
+    }
+
+    public void setNom_categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
     }
 
     @Override
-    public String toString()
-    {
-        return "Evenement{" + "id_event=" + id_event + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", horaire_com=" + horaire_com + ", horaire_fin=" + horaire_fin + ", description=" + description + ", image=" + image + ", id_categorie=" + id_categorie + ", id_user=" + id_user + '}';
+    public String toString() {
+        return "Evenement{" + "id_event=" + id_event + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", horaire_com=" + horaire_com + ", horaire_fin=" + horaire_fin + ", description=" + description + ", image=" + image + '}';
     }
-
-   
     
+    
+    
+
+ 
 }

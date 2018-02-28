@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StatAdminController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="-2.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../styles/Main.css">
+         <children>
+            <AnchorPane id="anchorpane_border" fx:id="anchorpane_main" layoutX="-7.0" prefHeight="600.0" prefWidth="1011.0">
+               <children>
+                  <AnchorPane layoutX="2.0" layoutY="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="1009.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="338.0" spacing="10.0" AnchorPane.leftAnchor="10.0">
+                           <children>
+                              <Label id="lb_window_title" fx:id="lb_window_title" alignment="CENTER_RIGHT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Nom Prenom" />
+                           </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="918.0" layoutY="9.0" text="LogOut" />
+                     </children>
+                  </AnchorPane>
+                  <HBox id="layout_menu_hbox" fx:id="layout_menu_hbox" alignment="CENTER_LEFT" layoutX="3.0" layoutY="38.0" prefHeight="40.0" prefWidth="1007.0" spacing="20.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="36.0">
+                     <children>
+                        <FlowPane id="flowpane_avatar" fx:id="flowpane_avatar" alignment="CENTER" prefHeight="50.0" prefWidth="121.0">
+                           <children>
+                              <ImageView id="imgview_avatar" fx:id="profil_image" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/aujourdhui.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </FlowPane>
+                        <HBox id="hbox_search_box" fx:id="hbox_search_box" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0">
+                           <children>
+                              <ImageView fx:id="imgview_search" fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../Desktop/profile-management-master/profile-management-master/src/main/resources/images/search.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <TextField fx:id="txf_search_box" alignment="CENTER" prefHeight="30.0" prefWidth="272.0" promptText="Veuillez saisir pour rechercher">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </HBox>
+                        <Button id="btn_settings" fx:id="btn_settings" focusTraversable="false" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" text="Rechercher" />
+                        <Separator orientation="VERTICAL" />
+                     </children>
+                  </HBox>
+                  <AnchorPane layoutX="5.0" layoutY="90.0" prefHeight="518.0" prefWidth="1004.0" stylesheets="@../styles/Main.css" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="89.0">
+                     <children>
+                        <VBox id="vbox_right_menu" fx:id="vbox_right_menu" alignment="TOP_CENTER" layoutY="-1.0" prefHeight="504.0" prefWidth="158.0" spacing="15.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <JFXButton prefHeight="23.0" prefWidth="147.0" text="Liste des utilisateurs" />
+                              <JFXButton prefHeight="30.0" prefWidth="141.0" text="Editer profil" />
+                              <JFXButton prefHeight="30.0" prefWidth="157.0" text="Liste des demandes" />
+                              <JFXButton prefHeight="30.0" prefWidth="141.0" text="Conseils" />
+                              <JFXButton prefHeight="30.0" prefWidth="141.0" text="Evenements" />
+                              <JFXButton prefHeight="30.0" prefWidth="141.0" text="Notification" />
+                           </children>
+                        </VBox>
+                        <AnchorPane fx:id="listeU" layoutX="381.0" layoutY="120.0" prefHeight="30.0" prefWidth="30.0" />
+                        <PieChart fx:id="PieChart" layoutX="653.0" layoutY="20.0" prefHeight="201.0" prefWidth="233.0" />
+                        <Label layoutX="729.0" layoutY="223.0" prefHeight="17.0" prefWidth="157.0" text="Sexe utilisateur" />
+                        <BarChart fx:id="pays" layoutX="182.0" layoutY="22.0" prefHeight="221.0" prefWidth="346.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <LineChart fx:id="LineChart" layoutX="181.0" layoutY="251.0" prefHeight="234.0" prefWidth="356.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                        <Label layoutX="319.0" layoutY="246.0" text="Pays des utilisateurs" />
+                        <Label layoutX="305.0" layoutY="468.0" prefHeight="20.0" prefWidth="141.0" text="Etat demande" />
+                     </children>
+                  </AnchorPane>
+                  <VBox id="vbox_user_account" fx:id="vbox_user_account" layoutX="3.0" layoutY="111.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="109.0">
+                     <children>
+                        <Button id="btn_change_password" fx:id="btn_change_password" focusTraversable="false" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" />
+                        <Button id="btn_logout" fx:id="btn_logout" focusTraversable="false" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

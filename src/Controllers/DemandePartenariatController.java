@@ -6,12 +6,14 @@
 package Controllers;
 
 import Entities.Demande;
+import Entities.Etablissement;
 import Entities.Utilisateur;
 import Services.DemandeService;
 import Utils.GetConnectedUser;
 import Utils.PostFile;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import esbe.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -21,13 +23,18 @@ import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -91,17 +98,16 @@ public class DemandePartenariatController extends Application implements Initial
     {
         
     }
-    
-    
-    
+
     @FXML
-     void ajouterDemande(ActionEvent event) throws IOException, Exception
+     public void ajouterDemande(ActionEvent event) throws IOException, Exception
     {
         Utilisateur u = GetConnectedUser.GetConnectedUser();
+        Etablissement etab = new Etablissement();
         DemandeService es= new DemandeService();
         if(check.isSelected())
         {
-        Demande e = new Demande(nom.getText(), prenom.getText(),Integer.parseInt(cin.getText()), date_naissance.getValue(), PostFile.upload(f.getAbsolutePath()), PostFile.upload(f.getAbsolutePath()), PostFile.upload(f.getAbsolutePath()), PostFile.upload(f.getAbsolutePath()),Integer.parseInt(num_identifiant.getText()),u,"en attente");
+        Demande e = new Demande(nom.getText(), prenom.getText(),Integer.parseInt(cin.getText()), date_naissance.getValue(), PostFile.upload(f.getAbsolutePath()), PostFile.upload(f.getAbsolutePath()), PostFile.upload(f.getAbsolutePath()), PostFile.upload(f.getAbsolutePath()),Integer.parseInt(num_identifiant.getText()), PostFile.upload(f.getAbsolutePath()),u,"en attente",etab);
         es.ajouterDemande(e);
         }
         else 
@@ -113,6 +119,9 @@ public class DemandePartenariatController extends Application implements Initial
             alert.showAndWait();
             
         }
+
+        //stage.close();
+        
     }
     
 

@@ -38,6 +38,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -102,14 +104,34 @@ public class AjoutEventController implements Initializable {
     }
 
     @FXML
-    void ajouterEvenement(ActionEvent event) throws IOException, Exception {
+    public void ajouterEvenement(ActionEvent event) throws IOException, Exception {
         Utilisateur u = GetConnectedUser.GetConnectedUser();
         EvenementService es = new EvenementService();
         String nomCategorie = categorie.getSelectionModel().getSelectedItem();
         System.out.println("heth houwa" + categorie.getSelectionModel().getSelectedItem());
         Evenement e = new Evenement(date_ouverture.getValue(), date_fin.getValue(), horaire_ouv.getText(), horaire_ferm.getText(), description.getText(), PostFile.upload(f.getAbsolutePath()), es.getCategorie(nomCategorie), u);
+        
+        if(date_fin.getValue().isBefore(date_ouverture.getValue()))
+        {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Date fin est supérieur à la date début!");
+            alert.setContentText("Erreur");
+            alert.showAndWait();
+        }
+        else if(LocalDate.now().isAfter(date_ouverture.getValue()))
+        {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Date début est inférieure à la date actuelle");
+            alert.setContentText("Erreur");
+            alert.showAndWait();
+        }
+        else
+        {
         es.ajouterEvenement(e);
         
+        }
         
         
         Parent root = FXMLLoader.load(getClass().getResource("/Presentation/ProfilPartenaire.fxml"));
@@ -141,7 +163,7 @@ public class AjoutEventController implements Initializable {
     }
 
     @FXML
-    void retour(ActionEvent event) throws IOException
+    public void retour(ActionEvent event) throws IOException
     {
 //                FXMLLoader loader = new FXMLLoader();
 //                loader.setLocation(getClass().getResource("/Presentation/ProfilPartenaire.fxml"));

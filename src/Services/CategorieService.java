@@ -112,7 +112,46 @@ public class CategorieService implements ICategorie
     }
 
     @Override
-    public List<Categorie> afficherCategorie()
+    public List<Categorie> afficherCategorie(int idPartenaire)
+    {
+        List<Categorie> ListCategorie=new ArrayList <Categorie>();
+        
+        ResultSet rs;
+        
+        String sql ="SELECT ca.*,user.username  FROM categorie ca ,fos_user user  WHERE (ca.id_user = USER.id) and (ca.id_user='"+idPartenaire+"')";
+        try 
+        {
+            Statement stl = conn.createStatement();
+            rs=stl.executeQuery(sql);          
+            System.out.println("Affichage Done");
+            while(rs.next())
+            {
+                Categorie cat = new Categorie();
+                cat.setId_categorie(rs.getInt("id_categorie"));
+                cat.setNom(rs.getString("nom"));
+                //cat.setId_user(rs.getInt("id_user"));
+                cat.setNom_user(rs.getString("username"));
+                cat.setType(rs.getString("type"));
+                ListCategorie.add(cat);
+                System.out.println(cat.toString());
+
+                
+            }
+        } 
+        catch (SQLException ex) 
+            
+        {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        
+       return ListCategorie;
+    }
+    
+    
+        @Override
+    public List<Categorie> afficherToutCategorie()
     {
         List<Categorie> ListCategorie=new ArrayList <Categorie>();
         
@@ -148,8 +187,6 @@ public class CategorieService implements ICategorie
         
        return ListCategorie;
     }
-    
-    
     
 
     public List<String> afficherCategorieEvt()

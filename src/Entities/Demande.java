@@ -5,6 +5,8 @@
  */
 package Entities;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Maha
@@ -15,22 +17,24 @@ public class Demande
     private String nom;
     private String prenom;
     private int CIN;
-    private String date_naissance;
+    private LocalDate date_naissance;
     private String CIN_image_recto;
     private String CIN_image_verso;
     private String diplome;
     private String photo_etab;
     private int num_identifiant;
     private String patente;
-    private int id_user;
+    private Utilisateur user;
+    private String etat;
+    Etablissement etablissement;
 
     public Demande()
     {
-        
+        user = new Utilisateur();
+        etablissement= new Etablissement();
     }
 
-    public Demande(String nom, String prenom, int CIN, String date_naissance, String CIN_image_recto, String CIN_image_verso, String diplome,String photo_etab, int num_identifiant, String patente, int id_user)
-    {
+    public Demande(String nom, String prenom, int CIN, LocalDate date_naissance, String CIN_image_recto, String CIN_image_verso, String diplome, String photo_etab, int num_identifiant,String patente, Utilisateur user, String etat,Etablissement etablissement) {
         this.nom = nom;
         this.prenom = prenom;
         this.CIN = CIN;
@@ -38,13 +42,19 @@ public class Demande
         this.CIN_image_recto = CIN_image_recto;
         this.CIN_image_verso = CIN_image_verso;
         this.diplome = diplome;
-        this.photo_etab=photo_etab;
+        this.photo_etab = photo_etab;
         this.num_identifiant = num_identifiant;
         this.patente = patente;
-        this.id_user = id_user;
+        this.user = user;
+        this.etat = etat;
+        this.etablissement=etablissement;
     }
 
 
+
+    public int getId_demande() {
+        return id_demande;
+    }
 
     public String getNom() {
         return nom;
@@ -58,7 +68,7 @@ public class Demande
         return CIN;
     }
 
-    public String getDate_naissance() {
+    public LocalDate getDate_naissance() {
         return date_naissance;
     }
 
@@ -74,6 +84,10 @@ public class Demande
         return diplome;
     }
 
+    public String getPhoto_etab() {
+        return photo_etab;
+    }
+
     public int getNum_identifiant() {
         return num_identifiant;
     }
@@ -82,28 +96,18 @@ public class Demande
         return patente;
     }
 
-    public int getId_user() {
-        return id_user;
+    public Utilisateur getUser() {
+        return user;
     }
 
-    public int getId_demande() {
-        return id_demande;
+    public String getEtat() {
+        return etat;
     }
 
-    public void setPhoto_etab(String photo_etab) {
-        this.photo_etab = photo_etab;
-    }
-
-    public String getPhoto_etab() {
-        return photo_etab;
-    }
-
-    
     public void setId_demande(int id_demande) {
         this.id_demande = id_demande;
     }
- 
-    
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -116,7 +120,7 @@ public class Demande
         this.CIN = CIN;
     }
 
-    public void setDate_naissance(String date_naissance) {
+    public void setDate_naissance(LocalDate date_naissance) {
         this.date_naissance = date_naissance;
     }
 
@@ -132,6 +136,10 @@ public class Demande
         this.diplome = diplome;
     }
 
+    public void setPhoto_etab(String photo_etab) {
+        this.photo_etab = photo_etab;
+    }
+
     public void setNum_identifiant(int num_identifiant) {
         this.num_identifiant = num_identifiant;
     }
@@ -140,15 +148,27 @@ public class Demande
         this.patente = patente;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public Etablissement getEtablissement() {
+        return etablissement;
+    }
+
+    public void setEtablissement(Etablissement etablissement) {
+        this.etablissement = etablissement;
     }
 
     @Override
     public String toString() {
-        return "Demande{" + "id_demande=" + id_demande + ", nom=" + nom + ", prenom=" + prenom + ", CIN=" + CIN + ", date_naissance=" + date_naissance + ", CIN_image_recto=" + CIN_image_recto + ", CIN_image_verso=" + CIN_image_verso + ", diplome=" + diplome + ", photo_etab=" + photo_etab + ", num_identifiant=" + num_identifiant + ", patente=" + patente + ", id_user=" + id_user + '}';
+        return "Demande{" + "id_demande=" + id_demande + ", nom=" + nom + ", prenom=" + prenom + ", CIN=" + CIN + ", date_naissance=" + date_naissance + ", CIN_image_recto=" + CIN_image_recto + ", CIN_image_verso=" + CIN_image_verso + ", diplome=" + diplome + ", photo_etab=" + photo_etab + ", num_identifiant=" + num_identifiant + ", patente=" + patente + ", etat=" + etat + '}';
     }
 
-
+    
     
 }

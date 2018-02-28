@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjoutConseilController">
+   <children>
+      <Label layoutX="112.0" layoutY="137.0" text="Catégorie : " />
+      <Label layoutX="112.0" layoutY="204.0" text="Description : " />
+      <JFXComboBox fx:id="categorie" layoutX="212.0" layoutY="120.0" prefHeight="25.0" prefWidth="174.0" />
+      <JFXTextField fx:id="description" layoutX="214.0" layoutY="178.0" prefHeight="39.0" prefWidth="174.0" />
+      <Label layoutX="112.0" layoutY="276.0" text="Image :" />
+      <Label layoutX="182.0" layoutY="55.0" text="Ajouter Conseil">
+         <font>
+            <Font name="Footlight MT Light" size="21.0" />
+         </font>
+      </Label>
+      <Separator layoutX="97.0" layoutY="81.0" prefHeight="10.0" prefWidth="337.0" />
+      <JFXButton buttonType="RAISED" layoutX="255.0" layoutY="499.0" onAction="#retour" prefHeight="14.0" prefWidth="113.0" ripplerFill="#f52020" style="-fx-background-color: #F39C12;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="132.0" layoutY="499.0" onAction="#ajouterConseil" prefHeight="20.0" prefWidth="113.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="image" layoutX="212.0" layoutY="267.0" onAction="#uploadPhoto" prefHeight="39.0" prefWidth="174.0" style="-fx-background-color: #00A65A;" text="Image" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="UPLOAD" size="24.0" text="" wrappingWidth="21.285715103149414" />
+         </graphic>
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="pic" fitHeight="150.0" fitWidth="200.0" layoutX="150.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

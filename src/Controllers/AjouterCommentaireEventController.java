@@ -13,6 +13,7 @@ import Services.EvenementService;
 import Utils.GetConnectedUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import esbe.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -23,7 +24,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -49,8 +54,6 @@ public class AjouterCommentaireEventController implements Initializable {
     @FXML
     private Button ajouter;
 
-    @FXML
-    private Button Annuler;
 
     @FXML
     private JFXTextField commentaire;
@@ -91,6 +94,8 @@ public class AjouterCommentaireEventController implements Initializable {
     private TableColumn<Commentaire, String> contenu;
     @FXML
     private TableColumn<Commentaire, String> proprietaire;
+    @FXML
+    private JFXButton Annuler1;
 
     /**
      * Initializes the controller class.
@@ -142,10 +147,11 @@ public class AjouterCommentaireEventController implements Initializable {
             proprietaire.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getUser().getUsername()));
         }
 
-        Utilisateur u = null;
+        Utilisateur u = GetConnectedUser.GetConnectedUser();
         if (es.checkisPartcipant(u, e)) 
         {
             btnparticipe.setText("deja Participant");
+            //btnparticipe.setDisable(true);
             btnparticipe.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -194,23 +200,51 @@ public class AjouterCommentaireEventController implements Initializable {
     }
 
     @FXML
-    private void ajouterCommentaire(ActionEvent event) throws IOException 
+    public void ajouterCommentaire(ActionEvent event) throws IOException 
     {
         Utilisateur u = GetConnectedUser.GetConnectedUser();
         CommentaireService commentaireService = new CommentaireService();
         Commentaire c = new Commentaire(u,commentaire.getText(),e);
         commentaireService.ajouterCommentaireEvent(c);
         
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("/Presentation/AjouterCommentaireEvent.fxml"));
-//        Parent tableView = loader.load();
-//        Scene tablScene = new Scene(tableView); 
-//        Stage primary = new Stage();
-//        primary.setScene(tablScene);
-//        primary.show();
-//        annuler();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/Presentation/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Presentation/EventUtilisateur.fxml"));
+        AnchorPane name = (AnchorPane) loader.load();          
+        ProfileController profilController = new ProfileController();
+        profilController.getMainMain().getChildren().add(name);
+        profilController.getMainMain().autosize();
+        User u1 = new User();
+        Scene scene = new Scene(root);
+        u1.getStageUser().setScene(scene);
+        u1.getStageUser().show();
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+    
+        @FXML
+    public void retour(ActionEvent event) throws IOException 
+            
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("/Presentation/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Presentation/EventUtilisateur.fxml"));
+        AnchorPane name = (AnchorPane) loader.load();          
+        ProfileController profilController = new ProfileController();
+        profilController.getMainMain().getChildren().add(name);
+        profilController.getMainMain().autosize();
+        User u = new User();
+        Scene scene = new Scene(root);
+        u.getStageUser().setScene(scene);
+        u.getStageUser().show();
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 
     }
 
 
-}
+

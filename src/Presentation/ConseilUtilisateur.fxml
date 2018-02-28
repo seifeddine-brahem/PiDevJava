@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles/AddProfile.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="Controllers.ConseilUserController">
+   <children>
+      <TableView fx:id="TableConseil" layoutX="7.0" layoutY="332.0" prefHeight="105.0" prefWidth="695.0">
+         <columns>
+            <TableColumn fx:id="id_conseil" minWidth="0.0" prefWidth="0.0" />
+            <TableColumn fx:id="description" prefWidth="242.0" text="Description" />
+            <TableColumn fx:id="categorie" prefWidth="163.0" text="Catégorie" />
+            <TableColumn fx:id="proprietaire" prefWidth="157.0" text="Propriétaire" />
+            <TableColumn fx:id="image" prefWidth="132.0" text="Image" />
+         </columns>
+      </TableView>
+      <Separator layoutX="21.0" layoutY="46.0" prefHeight="4.0" prefWidth="679.0" />
+      <Label id="lb_title" fx:id="lb_title" alignment="CENTER" contentDisplay="CENTER" layoutX="288.0" layoutY="14.0" text="Liste des conseils" />
+      <JFXListView fx:id="ListView" layoutX="13.0" layoutY="96.0" prefHeight="219.0" prefWidth="408.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="13.0" layoutY="71.0" text="Image de l'événement " />
+      <Label layoutX="244.0" layoutY="71.0" text="Description " />
+      <Label layoutX="468.0" layoutY="71.0" prefHeight="3.0" prefWidth="209.0" text="Veuillez choisir une catégorie :  " textOverrun="LEADING_WORD_ELLIPSIS" />
+      <JFXComboBox fx:id="NomCategorie" layoutX="480.0" layoutY="98.0" prefHeight="28.0" prefWidth="170.0" />
+      <Label layoutX="468.0" layoutY="190.0" prefHeight="18.0" prefWidth="159.0" text="Veuillez choisir un nom : " />
+      <JFXComboBox fx:id="NomUtilisateur" layoutX="483.0" layoutY="218.0" prefHeight="28.0" prefWidth="170.0" />
+      <JFXButton fx:id="RechercherNom" buttonType="RAISED" layoutX="508.0" layoutY="149.0" onAction="#chercherConseil" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #0073B7;" text="Rechercher" textFill="#fffefe">
+         <font>
+            <Font name="Roboto Black" size="13.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14.0" wrappingWidth="19.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="RechercherNomUti" buttonType="RAISED" layoutX="511.0" layoutY="275.0" onAction="#chercherConseilParPartenaire" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #0073B7;" text="Rechercher" textFill="#fffefe">
+         <font>
+            <Font name="Roboto Black" size="13.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14.0" wrappingWidth="19.0" />
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

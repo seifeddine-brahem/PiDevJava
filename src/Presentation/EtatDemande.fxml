@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="500.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EtatDemandeController">
+   <children>
+      <Label layoutX="118.0" layoutY="40.0" prefHeight="23.0" prefWidth="350.0" text="Details Demande de partenariat">
+         <font>
+            <Font name="Footlight MT Light" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="76.0" text="Veuillez répondre a cette demande" />
+      <AnchorPane layoutX="102.0" layoutY="158.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="102.0" layoutY="200.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="90.0" layoutY="278.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="90.0" layoutY="374.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="101.0" layoutY="410.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="48.0" layoutY="452.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="90.0" layoutY="118.0" prefHeight="25.0" prefWidth="25.0" />
+      <ImageView fx:id="diplome" fitHeight="130.0" fitWidth="145.0" layoutX="236.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="patente" fitHeight="130.0" fitWidth="145.0" layoutX="346.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cin_verso" fitHeight="130.0" fitWidth="145.0" layoutX="181.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cin_recto" fitHeight="130.0" fitWidth="145.0" layoutX="18.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="116.0" layoutY="125.0" text="Nom :" />
+      <Label layoutX="116.0" layoutY="149.0" text="Prénom :" />
+      <Label layoutX="116.0" layoutY="173.0" text="Date naissance :" />
+      <Label layoutX="116.0" layoutY="198.0" text="Numéro identifiant : " />
+      <Label layoutX="116.0" layoutY="223.0" text="CIN :" />
+      <Label fx:id="nom" layoutX="282.0" layoutY="126.0" text="Nom :" />
+      <Label fx:id="prenom" layoutX="282.0" layoutY="150.0" text="Prénom :" />
+      <Label fx:id="date_naiss" layoutX="282.0" layoutY="174.0" text="Date naissance :" />
+      <Label fx:id="num_id" layoutX="282.0" layoutY="199.0" text="Numéro identifiant : " />
+      <Label fx:id="cin" layoutX="282.0" layoutY="224.0" text="CIN :" />
+      <ImageView fx:id="photo_etab" fitHeight="130.0" fitWidth="145.0" layoutX="73.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton fx:id="Annuler" buttonType="RAISED" layoutX="271.0" layoutY="555.0" onAction="#decliner" prefHeight="25.0" prefWidth="113.0" ripplerFill="#f52020" style="-fx-background-color: #F39C12;" text="Decliner" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="a" buttonType="RAISED" layoutX="148.0" layoutY="555.0" onAction="#accepter" prefHeight="23.0" prefWidth="113.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Accepter" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <Separator layoutX="87.0" layoutY="66.0" prefHeight="10.0" prefWidth="337.0" />
+   </children>
+</AnchorPane>

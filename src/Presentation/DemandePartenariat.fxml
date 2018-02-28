@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DemandePartenariatController">
+   <children>
+      <CheckBox fx:id="check" layoutX="218.0" layoutY="429.0" mnemonicParsing="false" text="J'ai lus et j'accepte les conditions générales." />
+      <Label layoutX="142.0" layoutY="2.0" prefHeight="35.0" prefWidth="380.0" text="Vous voulez devenir partenaire dans  ESBE ?">
+         <font>
+            <Font name="Footlight MT Light" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="228.0" layoutY="30.0" text="Merci remplir le reste de ce formulaire" />
+      <AnchorPane layoutX="102.0" layoutY="158.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="102.0" layoutY="200.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="90.0" layoutY="278.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="90.0" layoutY="374.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="101.0" layoutY="410.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="48.0" layoutY="452.0" prefHeight="25.0" prefWidth="25.0" />
+      <AnchorPane layoutX="90.0" layoutY="118.0" prefHeight="25.0" prefWidth="25.0" />
+      <Label layoutX="128.0" layoutY="411.0" text="Pour des raisons de sécurité, veuillez mettre toutes les photos demandées. " />
+      <JFXTextField fx:id="nom" layoutX="136.0" layoutY="95.0" prefHeight="30.0" prefWidth="163.0" promptText="Nom" />
+      <JFXTextField fx:id="prenom" layoutX="136.0" layoutY="145.0" prefHeight="30.0" prefWidth="163.0" promptText="Prenom" />
+      <JFXTextField fx:id="cin" layoutX="134.0" layoutY="203.0" prefHeight="30.0" prefWidth="163.0" promptText="CIN" />
+      <DatePicker fx:id="date_naissance" layoutX="136.0" layoutY="268.0" prefHeight="30.0" prefWidth="163.0" promptText="Date de naissance" />
+      <JFXButton fx:id="image_cin_recto" layoutX="428.0" layoutY="203.0" onAction="#uploadPhoto" prefHeight="25.0" prefWidth="163.0" text="Image CIN recto" />
+      <JFXButton fx:id="image_cin_verso" layoutX="428.0" layoutY="268.0" onAction="#uploadPhoto" prefHeight="25.0" prefWidth="163.0" text="Image CIN verso" />
+      <JFXButton fx:id="patente" layoutX="430.0" layoutY="326.0" onAction="#uploadPhoto" prefHeight="25.0" prefWidth="101.0" text="Patente" />
+      <JFXButton fx:id="photo_diplome" layoutX="419.0" layoutY="153.0" onAction="#uploadPhoto" prefHeight="25.0" prefWidth="163.0" text="Photo Diplôme" />
+      <JFXButton fx:id="photo_etab" layoutX="434.0" layoutY="104.0" onAction="#uploadPhoto" prefHeight="25.0" prefWidth="163.0" text="Photo etablissement" />
+      <JFXTextField fx:id="num_identifiant" layoutX="139.0" layoutY="327.0" promptText="Numéro d'identifiant" />
+      <JFXButton fx:id="Annuler" buttonType="RAISED" layoutX="365.0" layoutY="371.0" prefHeight="14.0" prefWidth="113.0" ripplerFill="#f52020" style="-fx-background-color: #F39C12;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="inscrire" buttonType="RAISED" layoutX="242.0" layoutY="371.0" onAction="#ajouterDemande" prefHeight="20.0" prefWidth="113.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Suivant" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <HBox alignment="CENTER" layoutX="26.0" layoutY="78.0" prefHeight="14.0" prefWidth="667.0" spacing="2.0">
+         <children>
+            <Label prefHeight="4.0" prefWidth="130.0" style="-fx-background-color: #0073B7; -fx-min-height: 4; -fx-pref-height: 4;" />
+            <Circle fill="#e8e9eb" radius="7.0" stroke="#f39c12" strokeType="INSIDE" strokeWidth="3.0" />
+            <Label prefHeight="4.0" prefWidth="283.0" style="-fx-background-color: #0073B7; -fx-min-height: 4; -fx-pref-height: 4;" />
+            <Circle fill="#e8e9eb" radius="7.0" stroke="#f39c12" strokeType="INSIDE" strokeWidth="3.0" />
+            <Label prefHeight="4.0" prefWidth="130.0" style="-fx-background-color: #0073B7; -fx-min-height: 4; -fx-pref-height: 4;" />
+         </children>
+      </HBox>
+      <Text layoutX="135.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations" textAlignment="CENTER" wrappingWidth="149.13671875">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="421.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vérifivation" textAlignment="CENTER" wrappingWidth="197.1367210149765">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

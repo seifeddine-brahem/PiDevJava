@@ -79,7 +79,7 @@ public class AjoutConseilController implements Initializable
     }    
 
     @FXML
-    private void ajouterConseil(ActionEvent event) throws IOException, Exception 
+    public void ajouterConseil(ActionEvent event) throws IOException, Exception 
     {
         Utilisateur u = GetConnectedUser.GetConnectedUser();
         ConseilService conseilService = new ConseilService();
@@ -156,7 +156,7 @@ public class AjoutConseilController implements Initializable
         }
 
     @FXML
-    private void retour(ActionEvent event) throws IOException 
+    public void retour(ActionEvent event) throws IOException 
     {
         Parent root = FXMLLoader.load(getClass().getResource("/Presentation/ProfilPartenaire.fxml"));
 

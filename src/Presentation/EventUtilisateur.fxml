@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventUSerController">
+   <children>
+      <Separator layoutX="250.0" layoutY="35.0" prefHeight="3.0" prefWidth="188.0" />
+      <Label id="lb_title" fx:id="lb_title" alignment="CENTER" contentDisplay="CENTER" layoutX="259.0" layoutY="7.0" text="Liste des événements" />
+      <JFXListView fx:id="ListView" layoutX="16.0" layoutY="98.0" prefHeight="162.0" prefWidth="449.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="24.0" layoutY="74.0" text="Image de l'événement " />
+      <Label layoutX="208.0" layoutY="71.0" text="Description " />
+      <Separator layoutX="484.0" layoutY="181.0" prefWidth="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b3b8bc" height="80.0" layoutX="585.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f54" height="80.0" layoutX="479.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d504c1" height="80.0" layoutX="585.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2575b2" height="80.0" layoutX="479.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="104.0" />
+      <Text fontSmoothingType="LCD" layoutX="516.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégories évenement">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <JFXListView fx:id="listCat" layoutX="493.0" layoutY="211.0" onMouseClicked="#affichagerCat" prefHeight="61.0" prefWidth="188.0" />
+      <DatePicker fx:id="date" layoutX="594.0" layoutY="106.0" onAction="#chercherParDate" prefHeight="8.0" prefWidth="87.0" />
+      <AnchorPane fx:id="aujourdhui" layoutX="518.0" layoutY="20.0" prefHeight="30.0" prefWidth="30.0" stylesheets="@esbe.css" />
+      <AnchorPane fx:id="demain" layoutX="618.0" layoutY="20.0" prefHeight="30.0" prefWidth="30.0" />
+      <AnchorPane fx:id="semaine" layoutX="512.0" layoutY="113.0" prefHeight="30.0" prefWidth="30.0" stylesheets="@../styles/listView.css" />
+      <JFXButton fx:id="todayButton" layoutX="492.0" layoutY="57.0" onAction="#chercherDateJour" text="Ajourd'hui" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="602.0" layoutY="57.0" onAction="#chercherEvenementDemain" text="Demain" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="481.0" layoutY="145.0" onAction="#chercherSemaine" text="Cette semaine" textFill="#fffefe">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="590.0" layoutY="145.0" onAction="#chercherParDate" text="Choisir date" textFill="#fcf9f9">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tableEvent" layoutX="5.0" layoutY="278.0" prefHeight="158.0" prefWidth="686.0">
+         <columns>
+            <TableColumn fx:id="date_ouverture" prefWidth="113.0" text="Date ouverture" />
+            <TableColumn fx:id="date_fermeture" prefWidth="114.0" text="Date fermeture" />
+            <TableColumn fx:id="horaire1" prefWidth="107.0" text="Horaire debut" />
+            <TableColumn fx:id="horaire2" prefWidth="83.0" text="Horaire fin " />
+            <TableColumn fx:id="description" prefWidth="89.0" text="Description" />
+            <TableColumn fx:id="image" prefWidth="87.0" text="Image" />
+            <TableColumn fx:id="categorie" prefWidth="92.0" text="Categorie" />
+         </columns>
+      </TableView>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/AddProfile.css" />
+      <URL value="@esbe.css" />
+   </stylesheets>
+</AnchorPane>

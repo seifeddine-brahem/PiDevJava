@@ -28,12 +28,14 @@ import javafx.collections.ObservableList;
  *
  * @author Ellouze Skander
  */
-public class EtablissementService implements IEtablissement {
+public class EtablissementService implements IEtablissement 
+{
 
     Connection connexion;
     private ObservableList<Etablissement> data;
    
-    public EtablissementService() {
+    public EtablissementService()
+    {
         connexion = MyDB.getinstance().getConnexion();
     }
     
@@ -44,7 +46,7 @@ public class EtablissementService implements IEtablissement {
         data = FXCollections.observableArrayList();
         List<Etablissement> ListEtablissement=new ArrayList <Etablissement>();              
         ResultSet rs;
-        String sql ="select * from etablissements where nom LIKE '%"+nom+"%' or adresse LIKE '%"+nom+"%';";
+        String sql ="select * from etablissements where nom LIKE '%"+nom+"%';";
 
         try 
         {
@@ -67,7 +69,7 @@ public class EtablissementService implements IEtablissement {
                 e.setSite_web(rs2.getString("site_web"));
                 e.setHeure_ouverture(rs2.getInt("heure_ouverture"));
                 e.setHeure_fermeture(rs2.getInt("heure_fermeture"));
-                e.setIdUser(rs2.getInt(1));
+              
 
                 data.add(e);
                 System.out.println(e);               
@@ -113,7 +115,7 @@ public class EtablissementService implements IEtablissement {
                 e.setSite_web(rs2.getString("site_web"));
                 e.setHeure_ouverture(rs2.getInt("heure_ouverture"));
                 e.setHeure_fermeture(rs2.getInt("heure_fermeture"));
-                e.setIdUser(rs2.getInt(1));
+                e.getUser().setId(rs2.getInt(1));
 
                 ListEtablissement.add(e);
                 System.out.println(e);               
@@ -156,7 +158,7 @@ public class EtablissementService implements IEtablissement {
                 e.setHeure_ouverture(rs2.getInt("heure_ouverture"));
                 e.setHeure_fermeture(rs2.getInt("heure_fermeture"));
                 e.setImage(rs2.getString("image"));
-                e.setIdUser(rs2.getInt(1));
+//                e.getUser().setId(rs2.getInt(1));
 
                 ListEtablissement.add(e);
                 System.out.println(e);               
@@ -230,6 +232,48 @@ public class EtablissementService implements IEtablissement {
     }
         
     
+    public String retourNom(Etablissement e)
+    {
+        return e.getNom();
+    }
         
+    public Etablissement etabById(int id)
+    {
+        
+         ResultSet rs;
+        String sql ="select * from etablissements where id_user ="+id+";";
+        Etablissement e= new Etablissement();
+        try 
+        {
+            Statement stl = connexion.createStatement();
+
+            ResultSet  rs2=stl.executeQuery(sql);       
+          
+            while(rs2.next())
+            {
+                e.setId(rs2.getInt("id"));
+                e.setNom(rs2.getString("nom"));
+                e.setAdresse(rs2.getString("adresse"));
+                e.setDate_ouverture(rs2.getString("date_ouverture"));
+                e.setDate_fermeture(rs2.getString("date_fermeture"));
+                e.setEmail(rs2.getString("email"));
+                e.setNum(rs2.getInt("numero"));
+                e.setFax(rs2.getInt("fax"));
+                e.setPage_fb(rs2.getString("page_facebook"));
+                e.setSite_web(rs2.getString("site_web"));
+                e.setHeure_ouverture(rs2.getInt("heure_ouverture"));
+                e.setHeure_fermeture(rs2.getInt("heure_fermeture"));
+                e.setImage(rs2.getString("image"));
+            }
+            
+               } 
+        catch (SQLException ex) 
+        {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return e;
+    }
 
 }

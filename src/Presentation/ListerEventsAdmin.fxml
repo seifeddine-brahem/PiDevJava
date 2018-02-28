@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles/AddProfile.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListerEventsAdminController">
+   <children>
+      <TableView fx:id="tableEvent" layoutX="12.0" layoutY="91.0" prefHeight="321.0" prefWidth="679.0">
+         <columns>
+            <TableColumn fx:id="date_ouverture" prefWidth="108.0" text="Date ouverture" />
+            <TableColumn fx:id="date_fermeture" prefWidth="116.0" text="Date fermeture" />
+            <TableColumn fx:id="horaire1" prefWidth="97.0" text="Horaire debut" />
+            <TableColumn fx:id="horaire2" prefWidth="111.0" text="Horaire fin " />
+            <TableColumn fx:id="description" prefWidth="157.0" text="Description" />
+            <TableColumn fx:id="image" maxWidth="110.0" prefWidth="85.0" text="Image" />
+         </columns>
+      </TableView>
+      <Separator layoutX="13.0" layoutY="73.0" prefHeight="11.0" prefWidth="679.0" />
+      <Label id="lb_title" fx:id="lb_title" alignment="CENTER" contentDisplay="CENTER" layoutX="267.0" layoutY="35.0" text="Liste des évenements" />
+   </children>
+</AnchorPane>

@@ -152,7 +152,7 @@ public class ConseilUserController implements Initializable
             dialogStage.showAndWait();
     }
     @FXML
-    private void chercherConseil(ActionEvent event) 
+    public void chercherConseil(ActionEvent event) 
     {
         TableConseil.setVisible(true);
         String s = NomCategorie.getSelectionModel().getSelectedItem();
@@ -172,7 +172,7 @@ public class ConseilUserController implements Initializable
     }
 
     @FXML
-    private void chercherConseilParPartenaire(ActionEvent event) 
+    public void chercherConseilParPartenaire(ActionEvent event) 
     {
                TableConseil.setVisible(true);
         ConseilService cs = new ConseilService();

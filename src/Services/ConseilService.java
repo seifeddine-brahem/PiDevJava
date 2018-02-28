@@ -148,6 +148,46 @@ public class ConseilService implements IConseil
        return ListConseils ;
                
     }
+    
+    
+        @Override
+    public List<Conseil> afficherConseils(int idPartenaire)
+    {
+        List<Conseil> ListConseils=new ArrayList <Conseil>();
+        
+        ResultSet rs;
+        
+        String sql ="SELECT c.*,ca.nom ,user.username  FROM conseil c, categorie ca ,fos_user user  WHERE (c.id_categorie = ca.id_categorie) and (c.id_user = USER.id) and (c.id_user='"+idPartenaire+"')";
+        try 
+        {
+            Statement stl = conn.createStatement();
+            rs=stl.executeQuery(sql);          
+            System.out.println("Affichage Done");
+            while(rs.next())
+            {
+                Conseil cons = new Conseil();
+                cons.setId_conseil(rs.getInt("id_conseil"));
+                cons.setDescription(rs.getString("description"));
+                cons.setImage(rs.getString("image"));
+//                cons(rs.getInt("id_categorie"));
+//                cons.setId_user(rs.getInt("id_user"));
+                cons.setNom_categorie(rs.getString("nom"));
+                cons.setNom_user(rs.getString("username"));
+                ListConseils.add(cons);
+                System.out.println(cons.toString());                
+            }
+        } 
+        catch (SQLException ex) 
+            
+        {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        
+       return ListConseils ;
+    }
+    
 
     @Override
     public  ObservableList<Conseil> chercherConseilParCategorie(String nomCategorie) 
